@@ -1,0 +1,6 @@
+D:\proyectos\Jaeger.SAT.Services\Jaeger.SAT.CFDI.Services.API\obj\Debug\Jaeger.SAT.CFDI.Services.API.csproj.AssemblyReference.cache
+D:\proyectos\Jaeger.SAT.Services\Jaeger.SAT.CFDI.Services.API\obj\Debug\Jaeger.SAT.CFDI.Services.API.csproj.CoreCompileInputs.cache
+D:\proyectos\Jaeger.SAT.Services\Jaeger.SAT.CFDI.Services.API\bin\Debug\Jaeger.SAT.CFDI.Services.API.dll
+D:\proyectos\Jaeger.SAT.Services\Jaeger.SAT.CFDI.Services.API\bin\Debug\Jaeger.SAT.CFDI.Services.API.pdb
+D:\proyectos\Jaeger.SAT.Services\Jaeger.SAT.CFDI.Services.API\obj\Debug\Jaeger.SAT.CFDI.Services.API.dll
+D:\proyectos\Jaeger.SAT.Services\Jaeger.SAT.CFDI.Services.API\obj\Debug\Jaeger.SAT.CFDI.Services.API.pdb
