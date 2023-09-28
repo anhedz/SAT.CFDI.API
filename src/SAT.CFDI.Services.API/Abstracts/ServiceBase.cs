@@ -94,7 +94,7 @@ namespace Jaeger.SAT.CFDI.Services.Abstracts {
                 };
             } catch (Exception ex) {
                 this.CodeError = new CodeError(0, "[Generar Token Consulta SignatureType] Error: " + ex.Message);
-                LogErrorService.EscribirLog("[Generar Token Consulta SignatureType] Error: " + ex.Message, ex.StackTrace);
+                LogErrorService.Write("[Generar Token Consulta SignatureType] Error: " + ex.Message, ex.StackTrace);
             }
             return signatureType;
         }

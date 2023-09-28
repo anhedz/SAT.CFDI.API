@@ -36,7 +36,7 @@ namespace Jaeger.SAT.CFDI.Services {
                     descargaMasivaTerceros = tercerosServiceClient.Descargar(this.Request(), out sPaquete);
                 }
             } catch (Exception ex) {
-                LogErrorService.EscribirLog("[Descarga Solicitud (Peticiones)] Error: " + ex.Message, ex.StackTrace);
+                LogErrorService.Write("[Descarga Solicitud (Peticiones)] Error: " + ex.Message, ex.StackTrace);
             }
             return descargaMasivaTerceros;
         }

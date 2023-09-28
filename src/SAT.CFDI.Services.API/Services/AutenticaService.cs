@@ -35,9 +35,9 @@ namespace Jaeger.SAT.CFDI.Services {
                 Console.WriteLine("token: " + this.Token);
                 return this.Token;
             } catch (FaultException ex) {
-                LogErrorService.EscribirLog("[Genera Token] Error: " + ex.Message, ex.StackTrace);
+                LogErrorService.Write("[Genera Token] Error: " + ex.Message, ex.StackTrace);
             } catch (Exception ex) {
-                LogErrorService.EscribirLog("[Genera Token] Error: " + ex.Message, ex.StackTrace);
+                LogErrorService.Write("[Genera Token] Error: " + ex.Message, ex.StackTrace);
             }
             return string.Empty;
         }

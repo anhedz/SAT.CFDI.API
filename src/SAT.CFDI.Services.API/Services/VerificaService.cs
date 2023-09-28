@@ -75,11 +75,11 @@ namespace Jaeger.SAT.CFDI.Services {
                     _SolicitudDescMasTercero = descargaServiceClient.VerificaSolicitudDescarga(this.Request());
                 }
                 var salida = XmlSerializerService.SerializeObject(_SolicitudDescMasTercero);
-                LogErrorService.EscribirLog("[Verifica Consulta (Peticiones)] Error: " + salida, "<-");
+                LogErrorService.Write("[Verifica Consulta (Peticiones)] Error: " + salida, "<-");
                 Console.WriteLine(salida);
             }
             catch (Exception ex) {
-                LogErrorService.EscribirLog("[Verifica Consulta (Peticiones)] Error: " + ex.Message, ex.StackTrace);
+                LogErrorService.Write("[Verifica Consulta (Peticiones)] Error: " + ex.Message, ex.StackTrace);
             }
             return _SolicitudDescMasTercero;
         }

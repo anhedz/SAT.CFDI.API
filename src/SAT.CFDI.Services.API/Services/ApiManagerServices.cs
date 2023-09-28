@@ -36,7 +36,7 @@ namespace Jaeger.SAT.CFDI.Services {
             if (!string.IsNullOrEmpty(this.Token)) {
                 if (!(this._lastUpdateTime > DateTime.Now)) {
                     this.CodeError = new CodeError(0, "Token expirado");
-                    LogErrorService.EscribirLog("Token expirado", this._lastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
+                    LogErrorService.Write("Token expirado", this._lastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
                 } else {
                     return true;
                 }
@@ -44,11 +44,11 @@ namespace Jaeger.SAT.CFDI.Services {
 
             this.Token = this._AutenticaService.GeneraToken();
             this._lastUpdateTime = DateTime.Now.AddMinutes(4);
-            LogErrorService.EscribirLog("Token expira en: ", this._lastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
+            LogErrorService.Write("Token expira en: ", this._lastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
             if (string.IsNullOrEmpty(this.Token)) {
                 this.Token = null;
                 this.CodeError = new CodeError(0, "Error de autenticación");
-                LogErrorService.EscribirLog("Error de autenticación", this._lastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
+                LogErrorService.Write("Error de autenticación", this._lastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
                 this._IsAutenticate = false;
                 return false;
             }
@@ -103,7 +103,7 @@ namespace Jaeger.SAT.CFDI.Services {
 
             if (this.Autenticacion() == false) {
                 Console.WriteLine("No se puede autenticar");
-                LogErrorService.EscribirLog("No se puede autenticar", "");
+                LogErrorService.Write("No se puede autenticar", "");
                 return null;
             }
 
@@ -142,7 +142,7 @@ namespace Jaeger.SAT.CFDI.Services {
                 }
                 return filezip;
             } catch (Exception ex) {
-                LogErrorService.EscribirLog(ex.Message, ex.StackTrace);
+                LogErrorService.Write(ex.Message, ex.StackTrace);
             }
             return string.Empty;
         }

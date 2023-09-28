@@ -5,7 +5,6 @@ using System.Web;
 using Jaeger.SAT.CFDI.Services.Abstracts;
 using Jaeger.SAT.CFDI.Services.API.Consultas;
 using Jaeger.SAT.CFDI.Services.Interfaces;
-using Jaeger.SAT.CFDI.Helpers;
 using Jaeger.SAT.CFDI.Services.Helpers;
 
 namespace Jaeger.SAT.CFDI.Services {
@@ -66,9 +65,9 @@ namespace Jaeger.SAT.CFDI.Services {
                     this._SolicitudDescMasTercero = descargaServiceClient.SolicitaDescarga(request);
                 }
                 var xmlResponse = XmlSerializerService.SerializeObject(this._SolicitudDescMasTercero);
-                LogErrorService.EscribirLog("[Genera Consulta (Peticiones)] Response: \r\n" + xmlResponse, "<-----");
+                LogErrorService.Write("[Genera Consulta (Peticiones)] Response: \r\n" + xmlResponse, "<-----");
             } catch (Exception ex) {
-                LogErrorService.EscribirLog("[Genera Consulta (Peticiones)] Error: " + ex.Message, ex.StackTrace);
+                LogErrorService.Write("[Genera Consulta (Peticiones)] Error: " + ex.Message, ex.StackTrace);
             }
             return this._SolicitudDescMasTercero;
         }
