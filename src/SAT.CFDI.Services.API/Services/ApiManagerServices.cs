@@ -134,12 +134,17 @@ namespace Jaeger.SAT.CFDI.Services {
             if (!Directory.Exists(this.Configuration.PathDownload)) {
                 Directory.CreateDirectory(this.Configuration.PathDownload);
             }
-            var filezip = Path.Combine(this.Configuration.PathDownload, fileName + ".zip");
-            using (FileStream fileStream = File.Create(filezip)) {
-                package.CopyTo(fileStream);
-                fileStream.Close();
+            try {
+                var filezip = Path.Combine(this.Configuration.PathDownload, fileName + ".zip");
+                using (FileStream fileStream = File.Create(filezip)) {
+                    package.CopyTo(fileStream);
+                    fileStream.Close();
+                }
+                return filezip;
+            } catch (Exception ex) {
+                LogErrorService.EscribirLog(ex.Message, ex.StackTrace);
             }
-            return filezip;
+            return string.Empty;
         }
     }
 }
