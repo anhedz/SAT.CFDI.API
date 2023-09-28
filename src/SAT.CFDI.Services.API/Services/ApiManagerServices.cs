@@ -2,6 +2,7 @@
 using System.IO;
 using Jaeger.SAT.CFDI.Services.Abstracts;
 using Jaeger.SAT.CFDI.Services.Entities;
+using Jaeger.SAT.CFDI.Services.Helpers;
 using Jaeger.SAT.CFDI.Services.Interfaces;
 
 namespace Jaeger.SAT.CFDI.Services {
@@ -35,6 +36,7 @@ namespace Jaeger.SAT.CFDI.Services {
             if (!string.IsNullOrEmpty(this.Token)) {
                 if (!(this._lastUpdateTime > DateTime.Now)) {
                     this.CodeError = new CodeError(0, "Token expirado");
+                    LogErrorService.EscribirLog("Token expirado", this._lastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
                 } else {
                     return true;
                 }
@@ -42,10 +44,11 @@ namespace Jaeger.SAT.CFDI.Services {
 
             this.Token = this._AutenticaService.GeneraToken();
             this._lastUpdateTime = DateTime.Now.AddMinutes(4);
-
+            LogErrorService.EscribirLog("Token expira en: ", this._lastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
             if (string.IsNullOrEmpty(this.Token)) {
                 this.Token = null;
                 this.CodeError = new CodeError(0, "Error de autenticación");
+                LogErrorService.EscribirLog("Error de autenticación", this._lastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
                 this._IsAutenticate = false;
                 return false;
             }
@@ -92,16 +95,16 @@ namespace Jaeger.SAT.CFDI.Services {
             return this._VerifyResponse;
         }
 
-        public void Descargar() {
+        public IVerifyResponse Descargar() {
             if (this._DescargaService == null) {
                 this._DescargaService = new DescargaService();
                 this._DescargaService.AddConfiguration(this.Configuration).AddSolicitante(this.Solicitante);
             }
 
-
             if (this.Autenticacion() == false) {
                 Console.WriteLine("No se puede autenticar");
-                return;
+                LogErrorService.EscribirLog("No se puede autenticar", "");
+                return null;
             }
 
             this._DescargaService.AddToken(this.Token);
@@ -115,15 +118,16 @@ namespace Jaeger.SAT.CFDI.Services {
                             this._DescargaService.AddIdPaquete(item);
                             var response = this._DescargaService.Execute(ref stream);
                             if (stream != null) {
-                                IDownloadResponse d0 = new SolicitudDescarga();
-                                d0.AddIdPackage(item);
-                                d0.AddPath(this.ProcessFile(stream, item));
-                                d0.AddStatusCode(new StatusCode(response.CodEstatus, response.Mensaje));
+                                IDownloadResponse d0 = new SolicitudDescarga().AddIdPackage(item)
+                                .AddPath(this.ProcessFile(stream, item))
+                                .AddStatusCode(new StatusCode(response.CodEstatus, response.Mensaje));
+                                this._VerifyResponse.AddPackage(d0);
                             }
                         }
                     }
                 }
             }
+            return this._VerifyResponse;
         }
 
         internal string ProcessFile(Stream package, string fileName) {

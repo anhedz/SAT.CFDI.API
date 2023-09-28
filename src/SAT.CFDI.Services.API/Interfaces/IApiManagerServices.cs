@@ -16,6 +16,6 @@
 
         IVerifyResponse Verifica();
 
-        void Descargar();
+        IVerifyResponse Descargar();
     }
 }

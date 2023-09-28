@@ -44,6 +44,14 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
             return this;
         }
 
+        public IVerifyResponse AddPackage(IDownloadResponse response) {
+            if (this.DownloadsPackages == null) {
+                this.DownloadsPackages = new List<IDownloadResponse>();
+            }
+            this.DownloadsPackages.Add(response);
+            return this;
+        }
+
         #region propiedades
         public IStatusCode StatusCode {
             get { return this._StatusCode; }
@@ -65,9 +73,12 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
             get { return this._PackagesIds; }
         }
 
+        
         public string XML {
             get { return this._XML; }
         }
+
+        public List<IDownloadResponse> DownloadsPackages { get; internal set; }
         #endregion
     }
 }

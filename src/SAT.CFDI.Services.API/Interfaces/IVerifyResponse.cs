@@ -14,6 +14,8 @@ namespace Jaeger.SAT.CFDI.Services.Interfaces {
 
         IVerifyResponse AddXML(string xml);
 
+        IVerifyResponse AddPackage(IDownloadResponse response);
+
         #region propiedades
         IStatusCode StatusCode { get; }
 
@@ -24,6 +26,8 @@ namespace Jaeger.SAT.CFDI.Services.Interfaces {
         int NumberCfdis { get; }
 
         List<string> PackagesIds { get; }
+
+        List<IDownloadResponse> DownloadsPackages { get; }
 
         string XML { get; }
         #endregion
