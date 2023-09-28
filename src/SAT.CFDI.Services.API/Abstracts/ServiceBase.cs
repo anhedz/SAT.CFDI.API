@@ -40,6 +40,9 @@ namespace Jaeger.SAT.CFDI.Services.Abstracts {
         public ICodeError CodeError { get; internal set; }
         #endregion
 
+        /// <summary>
+        /// endpoint del servicio
+        /// </summary>
         internal virtual EndpointAddress GetEndpointAddress() {
             return new EndpointAddress(URL);
         }

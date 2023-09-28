@@ -118,6 +118,7 @@
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\LogErrorService.cs" />
     <Compile Include="Helpers\LogInfoService.cs" />
+    <Compile Include="Helpers\Signer.cs" />
     <Compile Include="Helpers\StringEnum.cs" />
     <Compile Include="Helpers\XmlSerializerService.cs" />
     <Compile Include="Interfaces\IApiManagerServices.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Services\VerificaService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="changes.txt" />
     <Content Include="readme.txt" />
     <Content Include="sat30px.ico" />
   </ItemGroup>

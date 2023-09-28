@@ -2,6 +2,9 @@
 using Jaeger.SAT.CFDI.Services.Interfaces;
 
 namespace Jaeger.SAT.CFDI.Services.Abstracts {
+    /// <summary>
+    /// Base de Servicio
+    /// </summary>
     public abstract class Base : IBase {
         public Base() {
             this.Configuration = new Configuration();

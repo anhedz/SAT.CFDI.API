@@ -1,0 +1,7 @@
+﻿***************************************************************************************************
+*** HISTORIAL DE CAMBIOS
+***************************************************************************************************
+28/09/2023
+- método para comprobar la existencia de los archivos descargados.
+- agregar a la respues de la verificación los datos de la descarga de los paquetes.
+- clase Singer para realizar firma de las peticiones

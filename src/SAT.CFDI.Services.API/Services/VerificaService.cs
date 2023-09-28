@@ -88,7 +88,7 @@ namespace Jaeger.SAT.CFDI.Services {
             return new VerificaSolicitudDescargaMasivaTercero() {
                 IdSolicitud = _IdSolicitud,
                 RfcSolicitante = this.Solicitante.RFC,
-                Signature = CreateDigest()
+                Signature = new Signer().AddBytes(this.Solicitante.GetBytes()).AddPassword(this.Solicitante.PasswordKey).Build()
             };
         }
     }
