@@ -17,3 +17,5 @@ src/SAT.CFDI.Services.API/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cac
 src/SAT.CFDI.Services.API/obj/Debug/DesignTimeResolveAssemblyReferences.cache
 src/SAT.CFDI.Services.API/obj/Debug/Jaeger.SAT.CFDI.Services.API.pdb
 src/SAT.CFDI.Services.API/obj/Debug/Jaeger.SAT.CFDI.Services.API.dll
+src/SAT.CFDI.Services.API/bin/Debug/Jaeger.SAT.CFDI.Services.API.dll
+src/SAT.CFDI.Services.API/bin/Debug/Jaeger.SAT.CFDI.Services.API.pdb
