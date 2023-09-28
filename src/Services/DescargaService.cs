@@ -25,7 +25,7 @@ namespace Jaeger.SAT.CFDI.Services {
             return this;
         }
 
-        public RespuestaDescargaMasivaTerceros DescargaSolicitud(ref Stream sPaquete) {
+        public RespuestaDescargaMasivaTerceros Execute(ref Stream sPaquete) {
             var descargaMasivaTerceros = new RespuestaDescargaMasivaTerceros();
             try {
                 var tercerosServiceClient = new DescargaMasivaTercerosServiceClient(GetBinding(), GetEndpointAddress());

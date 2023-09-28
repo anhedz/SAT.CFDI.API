@@ -58,14 +58,4 @@ namespace Jaeger.SAT.CFDI.Services.Builder {
 
     public interface ISolicitudUUIDBuilder {
     }
-
-    public class SolicitudBuilder : ISolicitudBuilder {
-        public ISolicitudFechaInicialBuilder FechaInicial(DateTime fechaInicial) {
-            throw new NotImplementedException();
-        }
-
-        public ISolicitudUUIDBuilder FolioFiscal(string uuid) {
-            throw new NotImplementedException();
-        }
-    }
 }

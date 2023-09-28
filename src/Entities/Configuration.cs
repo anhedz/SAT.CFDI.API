@@ -2,7 +2,7 @@
 
 namespace Jaeger.SAT.CFDI.Services.Entities {
     public class Configuration : IConfiguration {
-        public Configuration() { }
+        public Configuration() { this.PathDownload = @"C:\Jaeger\Jaeger.Repositorio"; }
         public string PathDownload { get; set; }
     }
 }

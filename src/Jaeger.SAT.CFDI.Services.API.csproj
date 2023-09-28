@@ -95,6 +95,9 @@
     <Compile Include="Builder\ConfigurationBuilder.cs" />
     <Compile Include="Builder\IConfigurationBuilder.cs" />
     <Compile Include="Builder\ISolicitudBuilder.cs" />
+    <Compile Include="Builder\ISolicitudValidationBuilder.cs" />
+    <Compile Include="Builder\SolicitudBuilder.cs" />
+    <Compile Include="Builder\SolicitudValidationBuilder.cs" />
     <Compile Include="Entities\CodeError.cs" />
     <Compile Include="Entities\CodeRequest.cs" />
     <Compile Include="Entities\Configuration.cs" />

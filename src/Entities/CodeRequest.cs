@@ -3,10 +3,14 @@ using Jaeger.SAT.CFDI.Services.Interfaces;
 
 namespace Jaeger.SAT.CFDI.Services.Entities {
     public class CodeRequest : ICodeRequest {
-        private CodEstatusEnum _code;
+        private readonly CodEstatusEnum _code;
 
         public CodeRequest(string code) {
-            this._code = (CodEstatusEnum)Helpers.StringEnum.Parse(typeof(CodEstatusEnum), code);
+            if (code != null) {
+                this._code = (CodEstatusEnum)Helpers.StringEnum.Parse(typeof(CodEstatusEnum), code);
+            } else {
+                _code = CodEstatusEnum.ErrorInterno;
+            }
         }
 
         public CodEstatusEnum Code {

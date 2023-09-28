@@ -6,7 +6,6 @@ namespace Jaeger.SAT.CFDI.Services.Abstracts {
         protected internal IConsultaService _ConsultaService;
         protected internal IVerificaService _VerificaService;
         protected internal IDescargaService _DescargaService;
-        protected internal string _Token;
 
         public ApiManagerServicesBase() : base() { 
             this.Version = "AP1.0.0.1";

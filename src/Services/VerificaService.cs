@@ -54,6 +54,7 @@ namespace Jaeger.SAT.CFDI.Services {
 
             if (this._SolicitudDescMasTercero.IdsPaquetes != null) {
                 VerifyResponse.AddPackagesIds(this._SolicitudDescMasTercero.IdsPaquetes.ToList());
+                VerifyResponse.AddNumnberCFDIs(this._SolicitudDescMasTercero.NumeroCFDIs);
             }
 
             return VerifyResponse;
