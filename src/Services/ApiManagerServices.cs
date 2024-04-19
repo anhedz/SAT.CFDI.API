@@ -84,6 +84,7 @@ namespace Jaeger.SAT.CFDI.Services {
 
             if (string.IsNullOrEmpty(this.Token)) {
                 if (this.Autenticacion() == false) {
+                    LogErrorService.Write("No se puede autenticar", "");
                     Console.WriteLine("No se puede autenticar");
                 }
             }
@@ -113,15 +114,18 @@ namespace Jaeger.SAT.CFDI.Services {
                 if (this._VerifyResponse.PackagesIds != null) {
                     if (this._VerifyResponse.PackagesIds.Count > 0) {
                         Console.WriteLine(this._VerifyResponse.StatusCode.Message);
-                        foreach (var item in this._VerifyResponse.PackagesIds) {
+                        LogErrorService.Write(this._VerifyResponse.StatusCode.Message, "");
+                        foreach (var package in this._VerifyResponse.PackagesIds) {
                             Stream stream = null;
-                            this._DescargaService.AddIdPaquete(item);
+                            this._DescargaService.AddIdPaquete(package);
                             var response = this._DescargaService.Execute(ref stream);
                             if (stream != null) {
-                                IDownloadResponse d0 = new SolicitudDescarga().AddIdPackage(item)
-                                .AddPath(this.ProcessFile(stream, item))
-                                .AddStatusCode(new StatusCode(response.CodEstatus, response.Mensaje));
-                                this._VerifyResponse.AddPackage(d0);
+                                IDownloadResponse dowloadResponse = new SolicitudDescarga().AddIdPackage(package)
+                                    .AddPath(this.ProcessFile(stream, package))
+                                    .AddStatusCode(new StatusCode(response.CodEstatus, response.Mensaje));
+                                this._VerifyResponse.AddPackage(dowloadResponse);
+                            } else {
+                                LogErrorService.Write($"No se pudo descargar el paquete: {package}", "APIManager-Descargar");
                             }
                         }
                     }

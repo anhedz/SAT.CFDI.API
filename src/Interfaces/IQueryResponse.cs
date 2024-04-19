@@ -33,6 +33,9 @@
         /// </summary>
         IStatusCode StatusCode { get; }
 
+        /// <summary>
+        /// obtener o establecer proveedor del servicio
+        /// </summary>
         string ServiceProvider { get; }
 
         /// <summary>

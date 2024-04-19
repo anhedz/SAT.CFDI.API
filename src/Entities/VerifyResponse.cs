@@ -14,6 +14,7 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
 
         public VerifyResponse() { }
 
+        #region class build
         public IVerifyResponse AddStatusCode(IStatusCode statusCode) {
             this._StatusCode = statusCode;
             return this;
@@ -51,6 +52,7 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
             this.DownloadsPackages.Add(response);
             return this;
         }
+        #endregion
 
         #region propiedades
         public IStatusCode StatusCode {
