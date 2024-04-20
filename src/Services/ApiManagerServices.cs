@@ -12,7 +12,7 @@ namespace Jaeger.SAT.CFDI.Services {
         protected internal IQueryResponse _SolicitudResponse;
         protected internal IVerifyResponse _VerifyResponse;
         protected internal bool _IsAutenticate = false;
-        protected internal DateTime _lastUpdateTime = DateTime.Now;
+        protected internal DateTime _LastUpdateTime = DateTime.Now;
         #endregion
 
         public ApiManagerServices(ISolicitante solicitante) : base() {
@@ -21,6 +21,7 @@ namespace Jaeger.SAT.CFDI.Services {
             this._IsAutenticate = false;
             this._AutenticaService = new AutenticaService();
             this._AutenticaService.AddConfiguration(this.Configuration).AddSolicitante(solicitante);
+            this._LastUpdateTime = DateTime.Now;
         }
 
         public ISolicitud Solicitud {
@@ -34,21 +35,21 @@ namespace Jaeger.SAT.CFDI.Services {
 
         public bool Autenticacion() {
             if (!string.IsNullOrEmpty(this.Token)) {
-                if (!(this._lastUpdateTime > DateTime.Now)) {
+                if (!(this._LastUpdateTime > DateTime.Now)) {
                     this.CodeError = new CodeError(0, "Token expirado");
-                    LogErrorService.Write("Token expirado", this._lastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
+                    LogErrorService.Write("Token expirado", this._LastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
                 } else {
                     return true;
                 }
             }
 
             this.Token = this._AutenticaService.GeneraToken();
-            this._lastUpdateTime = DateTime.Now.AddMinutes(4);
-            LogErrorService.Write("Token expira en: ", this._lastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
+            this._LastUpdateTime = DateTime.Now.AddMinutes(4);
+            LogErrorService.Write("Token expira en: " + this._LastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"), "Autenticacion");
             if (string.IsNullOrEmpty(this.Token)) {
                 this.Token = null;
                 this.CodeError = new CodeError(0, "Error de autenticación");
-                LogErrorService.Write("Error de autenticación", this._lastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
+                LogErrorService.Write("Error de autenticación", this._LastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
                 this._IsAutenticate = false;
                 return false;
             }
@@ -120,10 +121,12 @@ namespace Jaeger.SAT.CFDI.Services {
                             this._DescargaService.AddIdPaquete(package);
                             var response = this._DescargaService.Execute(ref stream);
                             if (stream != null) {
-                                IDownloadResponse dowloadResponse = new SolicitudDescarga().AddIdPackage(package)
-                                    .AddPath(this.ProcessFile(stream, package))
-                                    .AddStatusCode(new StatusCode(response.CodEstatus, response.Mensaje));
-                                this._VerifyResponse.AddPackage(dowloadResponse);
+                                if (stream.Length > 0) {
+                                    IDownloadResponse dowloadResponse = new SolicitudDescarga().AddIdPackage(package)
+                                        .AddPath(this.ProcessFile(stream, package))
+                                        .AddStatusCode(new StatusCode(response.CodEstatus, response.Mensaje));
+                                    this._VerifyResponse.AddPackage(dowloadResponse);
+                                }
                             } else {
                                 LogErrorService.Write($"No se pudo descargar el paquete: {package}", "APIManager-Descargar");
                             }
@@ -135,17 +138,30 @@ namespace Jaeger.SAT.CFDI.Services {
         }
 
         internal string ProcessFile(Stream package, string fileName) {
+            // si el directorio no existe lo creamos
             if (!Directory.Exists(this.Configuration.PathDownload)) {
                 Directory.CreateDirectory(this.Configuration.PathDownload);
             }
             try {
+                // nombre a asignar al nuevo archivo
                 var filezip = Path.Combine(this.Configuration.PathDownload, fileName + ".zip");
+                // si existe entonces hacemos un backup del archivo existente para no eliminar
+                if (File.Exists(filezip)) {
+                    var renamefilezip = Path.Combine(this.Configuration.PathDownload, fileName + "_back_" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".zip");
+                    File.Copy(filezip, renamefilezip);
+                }
+                // si por alguna razon el archivo esta en uso, creamos uno diferente para no perder la descarga
+                if (FileService.IsFileinUse(filezip)) {
+                    filezip = Path.Combine(this.Configuration.PathDownload, fileName + "_" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".zip");
+                }
+
                 using (FileStream fileStream = File.Create(filezip)) {
                     package.CopyTo(fileStream);
                     fileStream.Close();
                 }
                 return filezip;
             } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
                 LogErrorService.Write(ex.Message, ex.StackTrace);
             }
             return string.Empty;

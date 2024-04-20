@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 
 namespace Jaeger.SAT.CFDI.Services.Interfaces {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IVerifyResponse {
         IVerifyResponse AddStatusCode(IStatusCode statusCode);
 

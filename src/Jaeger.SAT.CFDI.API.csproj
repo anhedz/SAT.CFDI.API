@@ -116,6 +116,7 @@
     <Compile Include="Enums\TipoConsultaEnum.cs" />
     <Compile Include="Enums\TipoDescargaEnum.cs" />
     <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\FileService.cs" />
     <Compile Include="Helpers\LogErrorService.cs" />
     <Compile Include="Helpers\LogInfoService.cs" />
     <Compile Include="Helpers\Signer.cs" />
