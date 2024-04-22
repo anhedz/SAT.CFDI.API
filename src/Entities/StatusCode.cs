@@ -1,6 +1,9 @@
 ﻿using Jaeger.SAT.CFDI.Services.Interfaces;
 
 namespace Jaeger.SAT.CFDI.Services.Entities {
+    /// <summary>
+    /// Defines "CodEstatus" and "Mensaje"
+    /// </summary>
     public class StatusCode : IStatusCode {
         private readonly int _Code;
         private readonly string _Message;
@@ -16,10 +19,16 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
             }
         }
 
+        /// <summary>
+        ///  Contains the value of "CodEstatus"
+        /// </summary>
         public int Code {
             get { return this._Code; }
         }
 
+        /// <summary>
+        ///  Contains the value of "Mensaje"
+        /// </summary>
         public string Message {
             get { return this._Message; }
         }

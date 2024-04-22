@@ -9,6 +9,9 @@ using Jaeger.SAT.CFDI.Services.Interfaces;
 using Jaeger.SAT.CFDI.Services.Helpers;
 
 namespace Jaeger.SAT.CFDI.Services {
+    /// <summary>
+    /// Es un servicio web que permite realizar solicitudes de descarga de CFDIs o Metadata por un rango de fechas, para que la petición sea aceptada debe ser    realizada por el emisor o receptor de los CFDIs de los cuales se quiere descargar.    Este WS está compuesto por la siguiente operación:
+    /// </summary>
     public class DescargaService : ServiceBase, IServiceBase, IBase, IDescargaService {
         protected internal string _IdPackage;
 
@@ -34,6 +37,9 @@ namespace Jaeger.SAT.CFDI.Services {
                     requestMessageProperty.Headers["Authorization"] = "WRAP access_token=\"" + HttpUtility.UrlDecode(Token) + "\"";
                     OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = requestMessageProperty;
                     descargaMasivaTerceros = tercerosServiceClient.Descargar(this.Request(), out sPaquete);
+                    var salida = XmlSerializerService.SerializeObject(descargaMasivaTerceros);
+                    LogErrorService.Write("[Descarga Solicitud (Peticiones)] Error: " + salida, "<-");
+                    Console.WriteLine(salida);
                 }
             } catch (Exception ex) {
                 LogErrorService.Write("[Descarga Solicitud (Peticiones)] Error: " + ex.Message, ex.StackTrace);

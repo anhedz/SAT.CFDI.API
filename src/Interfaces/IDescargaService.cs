@@ -3,7 +3,14 @@ using Jaeger.SAT.CFDI.Services.API.Descargas;
 
 namespace Jaeger.SAT.CFDI.Services.Interfaces {
     public interface IDescargaService : IBase {
+        /// <summary>
+        /// Agregar token de autenticacion
+        /// </summary>
         IDescargaService AddToken(string token);
+
+        /// <summary>
+        /// agregar id de paquete de la solicitud
+        /// </summary>
         void AddIdPaquete(string idPaquete);
 
         /// <summary>

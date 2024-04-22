@@ -22,8 +22,14 @@ namespace Jaeger.SAT.CFDI.Services.Interfaces {
         #region propiedades
         IStatusCode StatusCode { get; }
 
+        /// <summary>
+        /// EstadoSolicitud
+        /// </summary>
         IStatusRequest StatusRequest { get; }
 
+        /// <summary>
+        /// Codigos de status de solicitud
+        /// </summary>
         ICodeRequest CodeRequest { get; }
 
         int NumberCfdis { get; }

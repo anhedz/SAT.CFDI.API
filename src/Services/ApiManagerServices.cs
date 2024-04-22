@@ -120,12 +120,18 @@ namespace Jaeger.SAT.CFDI.Services {
                             Stream stream = null;
                             this._DescargaService.AddIdPaquete(package);
                             var response = this._DescargaService.Execute(ref stream);
+                            Console.WriteLine(response.Mensaje);
+                            LogErrorService.Write(response.Mensaje, response.CodEstatus);
+                            if (response.CodEstatus != "5008") {
+                                var pathzip = this.ProcessFile(stream, package);
+                            }
+                            IDownloadResponse dowloadResponse = new SolicitudDescarga().AddIdPackage(package)
+                                .AddPath(this.ProcessFile(stream, package))
+                                .AddStatusCode(new StatusCode(response.CodEstatus, response.Mensaje));
+                            this._VerifyResponse.AddPackage(dowloadResponse);
+                            // necesito cambiar la respuesta
                             if (stream != null) {
-                                if (stream.Length > 0) {
-                                    IDownloadResponse dowloadResponse = new SolicitudDescarga().AddIdPackage(package)
-                                        .AddPath(this.ProcessFile(stream, package))
-                                        .AddStatusCode(new StatusCode(response.CodEstatus, response.Mensaje));
-                                    this._VerifyResponse.AddPackage(dowloadResponse);
+                                if (stream != null) {
                                 }
                             } else {
                                 LogErrorService.Write($"No se pudo descargar el paquete: {package}", "APIManager-Descargar");
