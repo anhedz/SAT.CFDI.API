@@ -2,23 +2,9 @@
 
 namespace Jaeger.SAT.CFDI.Services.Interfaces {
     /// <summary>
-    /// 
+    /// Service Verify Result
     /// </summary>
     public interface IVerifyResponse {
-        IVerifyResponse AddStatusCode(IStatusCode statusCode);
-
-        IVerifyResponse AddStatusRequest(IStatusRequest status);
-
-        IVerifyResponse AddCodeRequest(ICodeRequest codeRequest);
-
-        IVerifyResponse AddNumnberCFDIs(int numberCFDIs);
-
-        IVerifyResponse AddPackagesIds(List<string> packages);
-
-        IVerifyResponse AddXML(string xml);
-
-        IVerifyResponse AddPackage(IDownloadResponse response);
-
         #region propiedades
         IStatusCode StatusCode { get; }
 
@@ -39,6 +25,22 @@ namespace Jaeger.SAT.CFDI.Services.Interfaces {
         List<IDownloadResponse> DownloadsPackages { get; }
 
         string XML { get; }
+        #endregion
+
+        #region build
+        IVerifyResponse AddStatusCode(IStatusCode statusCode);
+
+        IVerifyResponse AddStatusRequest(IStatusRequest status);
+
+        IVerifyResponse AddCodeRequest(ICodeRequest codeRequest);
+
+        IVerifyResponse AddNumnberCFDIs(int numberCFDIs);
+
+        IVerifyResponse AddPackagesIds(List<string> packages);
+
+        IVerifyResponse AddXML(string xml);
+
+        IVerifyResponse AddPackage(IDownloadResponse response);
         #endregion
     }
 }

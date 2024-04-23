@@ -114,23 +114,22 @@ namespace Jaeger.SAT.CFDI.Services {
             if (this._VerifyResponse != null) {
                 if (this._VerifyResponse.PackagesIds != null) {
                     if (this._VerifyResponse.PackagesIds.Count > 0) {
-                        Console.WriteLine(this._VerifyResponse.StatusCode.ToString());
                         LogErrorService.Write(this._VerifyResponse.StatusCode.Message, "");
 
                         foreach (var package in this._VerifyResponse.PackagesIds) {
                             Stream stream = null;
                             this._DescargaService.AddIdPaquete(package);
                             var responseDescarga = this._DescargaService.Execute(ref stream);
+                            if (this._VerifyResponse.StatusRequest.IsAccepted()) { }
                             IDownloadResponse downloadResponse = new SolicitudDescarga()
                                             .AddIdPackage(package)
                                             .AddStatusCode(new StatusCode(responseDescarga.CodEstatus, responseDescarga.Mensaje));
 
-                            Console.WriteLine(responseDescarga.ToString());
                             LogErrorService.Write(responseDescarga.Mensaje, responseDescarga.CodEstatus);
 
                             var pathZip = package;
-                            // si 
-                            if (responseDescarga.CodEstatus != "5008") {
+                            // si el codigo de respuesta es 5008
+                            if (downloadResponse.StatusCode.Code != 5008) {
                                 pathZip = this.ProcessFile(stream, package);
                             } else {
                                 LogErrorService.Write($"No se pudo descargar el paquete: {package}", "APIManager-Descargar");
@@ -140,7 +139,6 @@ namespace Jaeger.SAT.CFDI.Services {
 
                             // agregar paquete
                             this._VerifyResponse.AddPackage(downloadResponse);
-                            // necesito cambiar la respuesta
                         }
                     }
                 }

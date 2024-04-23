@@ -2,6 +2,9 @@
 using Jaeger.SAT.CFDI.Services.Interfaces;
 
 namespace Jaeger.SAT.CFDI.Services.Entities {
+    /// <summary>
+    /// Service Verify Result
+    /// </summary>
     public class VerifyResponse : IVerifyResponse {
         #region declaraciones
         protected internal IStatusCode _StatusCode;
@@ -13,6 +16,34 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
         #endregion
 
         public VerifyResponse() { }
+
+        #region propiedades
+        public IStatusCode StatusCode {
+            get { return this._StatusCode; }
+        }
+
+        public IStatusRequest StatusRequest {
+            get { return this._StatusRequest; }
+        }
+
+        public ICodeRequest CodeRequest {
+            get { return this._CodeRequest; }
+        }
+
+        public int NumberCfdis {
+            get { return this._NumberCfdis; }
+        }
+
+        public List<string> PackagesIds {
+            get { return this._PackagesIds; }
+        }
+        
+        public string XML {
+            get { return this._XML; }
+        }
+
+        public List<IDownloadResponse> DownloadsPackages { get; internal set; }
+        #endregion
 
         #region class build
         public IVerifyResponse AddStatusCode(IStatusCode statusCode) {
@@ -52,34 +83,6 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
             this.DownloadsPackages.Add(response);
             return this;
         }
-        #endregion
-
-        #region propiedades
-        public IStatusCode StatusCode {
-            get { return this._StatusCode; }
-        }
-
-        public IStatusRequest StatusRequest {
-            get { return this._StatusRequest; }
-        }
-
-        public ICodeRequest CodeRequest {
-            get { return this._CodeRequest; }
-        }
-
-        public int NumberCfdis {
-            get { return this._NumberCfdis; }
-        }
-
-        public List<string> PackagesIds {
-            get { return this._PackagesIds; }
-        }
-        
-        public string XML {
-            get { return this._XML; }
-        }
-
-        public List<IDownloadResponse> DownloadsPackages { get; internal set; }
         #endregion
     }
 }
