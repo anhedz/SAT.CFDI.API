@@ -65,7 +65,7 @@ namespace Jaeger.SAT.CFDI.Services {
                     this._SolicitudDescMasTercero = descargaServiceClient.SolicitaDescarga(request);
                 }
                 var xmlResponse = XmlSerializerService.SerializeObject(this._SolicitudDescMasTercero);
-                LogErrorService.Write("[Genera Consulta (Peticiones)] Response: \r\n" + xmlResponse, "<-----");
+                LogInfoService.Write("[Genera Consulta (Peticiones)] Response: \r\n" + xmlResponse, "<-----");
             } catch (Exception ex) {
                 LogErrorService.Write("[Genera Consulta (Peticiones)] Error: " + ex.Message, ex.StackTrace);
             }
@@ -132,6 +132,7 @@ namespace Jaeger.SAT.CFDI.Services {
                 response.Complemento = null;
             }
             response.Signature = CreateDigest();
+            LogInfoService.Write("[Consulta Solicitud (Request)]\r\n", XmlSerializerService.SerializeObject(response) + "\r\n<----");
             return response;
         }
     }

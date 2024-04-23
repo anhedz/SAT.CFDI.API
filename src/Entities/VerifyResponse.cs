@@ -74,7 +74,6 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
         public List<string> PackagesIds {
             get { return this._PackagesIds; }
         }
-
         
         public string XML {
             get { return this._XML; }

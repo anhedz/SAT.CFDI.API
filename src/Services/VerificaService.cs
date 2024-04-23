@@ -74,22 +74,24 @@ namespace Jaeger.SAT.CFDI.Services {
                     OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = requestMessageProperty;
                     _SolicitudDescMasTercero = descargaServiceClient.VerificaSolicitudDescarga(this.Request());
                 }
-                var salida = XmlSerializerService.SerializeObject(_SolicitudDescMasTercero);
-                LogErrorService.Write("[Verifica Consulta (Peticiones)] Error: " + salida, "<-");
-                Console.WriteLine(salida);
+                var outXML = XmlSerializerService.SerializeObject(_SolicitudDescMasTercero);
+                LogErrorService.Write("[Verifica Descarga (Response)]: \r\n" + outXML, "<-");
+                Console.WriteLine(outXML);
             }
             catch (Exception ex) {
-                LogErrorService.Write("[Verifica Consulta (Peticiones)] Error: " + ex.Message, ex.StackTrace);
+                LogErrorService.Write("[Verifica Descarga (Peticiones)] Error: " + ex.Message, ex.StackTrace);
             }
             return _SolicitudDescMasTercero;
         }
 
         internal VerificaSolicitudDescargaMasivaTercero Request() {
-            return new VerificaSolicitudDescargaMasivaTercero() {
+            var request = new VerificaSolicitudDescargaMasivaTercero() {
                 IdSolicitud = _IdSolicitud,
                 RfcSolicitante = this.Solicitante.RFC,
                 Signature = new Signer().AddBytes(this.Solicitante.GetBytes()).AddPassword(this.Solicitante.PasswordKey).Build()
             };
+            LogInfoService.Write("[Verifica Descarga (Request)]\r\n", XmlSerializerService.SerializeObject(request) + "\r\n<---");
+            return request;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Jaeger.SAT.CFDI.Services.Interfaces;
+using System.Collections.Generic;
 
 namespace Jaeger.SAT.CFDI.Services.Entities {
     /// <summary>
@@ -7,6 +8,10 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
     public class StatusCode : IStatusCode {
         private readonly int _Code;
         private readonly string _Message;
+        private readonly Dictionary<int, string> _values =
+            new Dictionary<int, string>() {
+
+            };
 
         public StatusCode(string code, string message) {
             if (!string.IsNullOrEmpty(code)) {

@@ -56,7 +56,7 @@ namespace Jaeger.SAT.CFDI.Services {
 
             this._IsAutenticate = true;
 
-            return true;
+            return this._IsAutenticate;
         }
 
         public IQueryResponse Consulta() {
@@ -114,28 +114,33 @@ namespace Jaeger.SAT.CFDI.Services {
             if (this._VerifyResponse != null) {
                 if (this._VerifyResponse.PackagesIds != null) {
                     if (this._VerifyResponse.PackagesIds.Count > 0) {
-                        Console.WriteLine(this._VerifyResponse.StatusCode.Message);
+                        Console.WriteLine(this._VerifyResponse.StatusCode.ToString());
                         LogErrorService.Write(this._VerifyResponse.StatusCode.Message, "");
+
                         foreach (var package in this._VerifyResponse.PackagesIds) {
                             Stream stream = null;
                             this._DescargaService.AddIdPaquete(package);
-                            var response = this._DescargaService.Execute(ref stream);
-                            Console.WriteLine(response.Mensaje);
-                            LogErrorService.Write(response.Mensaje, response.CodEstatus);
-                            if (response.CodEstatus != "5008") {
-                                var pathzip = this.ProcessFile(stream, package);
-                            }
-                            IDownloadResponse dowloadResponse = new SolicitudDescarga().AddIdPackage(package)
-                                .AddPath(this.ProcessFile(stream, package))
-                                .AddStatusCode(new StatusCode(response.CodEstatus, response.Mensaje));
-                            this._VerifyResponse.AddPackage(dowloadResponse);
-                            // necesito cambiar la respuesta
-                            if (stream != null) {
-                                if (stream != null) {
-                                }
+                            var responseDescarga = this._DescargaService.Execute(ref stream);
+                            IDownloadResponse downloadResponse = new SolicitudDescarga()
+                                            .AddIdPackage(package)
+                                            .AddStatusCode(new StatusCode(responseDescarga.CodEstatus, responseDescarga.Mensaje));
+
+                            Console.WriteLine(responseDescarga.ToString());
+                            LogErrorService.Write(responseDescarga.Mensaje, responseDescarga.CodEstatus);
+
+                            var pathZip = package;
+                            // si 
+                            if (responseDescarga.CodEstatus != "5008") {
+                                pathZip = this.ProcessFile(stream, package);
                             } else {
                                 LogErrorService.Write($"No se pudo descargar el paquete: {package}", "APIManager-Descargar");
                             }
+
+                            downloadResponse.AddPath(pathZip);
+
+                            // agregar paquete
+                            this._VerifyResponse.AddPackage(downloadResponse);
+                            // necesito cambiar la respuesta
                         }
                     }
                 }

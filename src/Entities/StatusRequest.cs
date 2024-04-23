@@ -3,7 +3,7 @@ using Jaeger.SAT.CFDI.Services.Interfaces;
 
 namespace Jaeger.SAT.CFDI.Services.Entities {
     /// <summary>
-    /// EstadoSolicitud
+    /// Estado de Solicitud
     /// </summary>
     public class StatusRequest : IStatusRequest {
         private readonly int _code;

@@ -1,9 +1,12 @@
 ﻿using Jaeger.SAT.CFDI.Services.Interfaces;
 
 namespace Jaeger.SAT.CFDI.Services.Entities {
+    /// <summary>
+    ///     Peticion de descarga.
+    /// </summary>
     internal class SolicitudDescarga : IDownloadResponse {
         /// <summary>
-        /// obtener id de paquete
+        ///     IdPaquete - Contiene el identificador del paquete que se desea descargar.
         /// </summary>
         public string IdPackage { get; internal set; }
 

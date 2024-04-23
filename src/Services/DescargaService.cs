@@ -37,22 +37,24 @@ namespace Jaeger.SAT.CFDI.Services {
                     requestMessageProperty.Headers["Authorization"] = "WRAP access_token=\"" + HttpUtility.UrlDecode(Token) + "\"";
                     OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = requestMessageProperty;
                     descargaMasivaTerceros = tercerosServiceClient.Descargar(this.Request(), out sPaquete);
-                    var salida = XmlSerializerService.SerializeObject(descargaMasivaTerceros);
-                    LogErrorService.Write("[Descarga Solicitud (Peticiones)] Error: " + salida, "<-");
-                    Console.WriteLine(salida);
+                    var outXML = XmlSerializerService.SerializeObject(descargaMasivaTerceros);
+                    LogErrorService.Write("[Descarga Solicitud (Descarga)] Response: \r\n" + outXML, "<-");
+                    Console.WriteLine(outXML);
                 }
             } catch (Exception ex) {
-                LogErrorService.Write("[Descarga Solicitud (Peticiones)] Error: " + ex.Message, ex.StackTrace);
+                LogErrorService.Write("[Descarga Solicitud (Descarga)] Error: " + ex.Message, ex.StackTrace);
             }
             return descargaMasivaTerceros;
         }
 
         internal PeticionDescargaMasivaTerceros Request() {
-            return new PeticionDescargaMasivaTerceros() {
+            var request = new PeticionDescargaMasivaTerceros() {
                 IdPaquete = _IdPackage,
                 RfcSolicitante = this.Solicitante.RFC,
                 Signature = CreateDigest()
             };
+            LogInfoService.Write("[Descarga Solicitud (Descarga)] Request: \r\n", XmlSerializerService.SerializeObject(request));
+            return request;
         }
     }
 }

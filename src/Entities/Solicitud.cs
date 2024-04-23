@@ -3,11 +3,21 @@ using Jaeger.SAT.CFDI.Services.Enums;
 using Jaeger.SAT.CFDI.Services.Interfaces;
 
 namespace Jaeger.SAT.CFDI.Services.Entities {
+    /// <summary>
+    /// Solicitud
+    /// </summary>
     public class Solicitud : ISolicitud {
         public Solicitud() { }
-        
+
+        /// <summary>
+        ///     IdSolicitud - Contiene el resultado de la petición con el código de respuesta y los UUID de los CFDIs de los cuales
+        ///     se solicitó la descarga, pero se encuentran en espera de una confirmación por parte del receptor.
+        /// </summary>
         public string IdSolicitud { get; set; }
 
+        /// <summary>
+        /// tipo de consulta Emitidos = 1 o Recibidos = 2
+        /// </summary>
         public TipoConsultaEnum TipoConsulta { get; set; }
 
         /// <summary>
