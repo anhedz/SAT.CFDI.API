@@ -30,10 +30,17 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
             get { return this._CodeRequest; }
         }
 
+        /// <summary>
+        ///     NumeroCFDIs - Número de CFDIs que conforman la solicitud de descarga consultada.
+        /// </summary>
         public int NumberCfdis {
             get { return this._NumberCfdis; }
         }
 
+        /// <summary>
+        ///     IdsPaquetes - Contiene los identificadores de los paquetes que componen la solicitud de descarga masiva. Solo se
+        ///     devuelve cuando la solicitud posee un estatus de finalizado.
+        /// </summary>
         public List<string> PackagesIds {
             get { return this._PackagesIds; }
         }
@@ -42,6 +49,10 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
             get { return this._XML; }
         }
 
+        /// <summary>
+        ///     IdsPaquetes - Contiene los identificadores de los paquetes que componen la solicitud de descarga masiva. Solo se
+        ///     devuelve cuando la solicitud posee un estatus de finalizado.
+        /// </summary>
         public List<IDownloadResponse> DownloadsPackages { get; internal set; }
         #endregion
 

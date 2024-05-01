@@ -3,7 +3,7 @@ using Jaeger.SAT.CFDI.Services.Entities;
 using Jaeger.SAT.CFDI.Services.Interfaces;
 
 namespace Jaeger.SAT.CFDI.Services.Helpers {
-    public static class Extensions {
+    internal static class Extensions {
         /// <summary>
         /// convertir objeto RespuestaSolicitudDescMasTercero a IQueryResponse
         /// </summary>

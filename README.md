@@ -21,3 +21,37 @@ protege esta información.
 El presente documento contiene la información necesaria para conocer y utilizar 
 los siguientes elementos que forman parte del Servicio de Solicitud de Descarga 
 Masiva.
+
+
+* Consulta/Query
+    - CodEstatus: Código de estado de la llamada.
+    - Mensaje: Pequeña descripcion del código de estado.
+    
+* Verificación/Verify
+    - CodEstatus: Código de estado de la llamada.
+    - Mensaje: Pequeña descripcion del código de estado.
+    - CodigoEstadoSolicitud: `CodeRequest` Estado de la solicitud de la descarga.
+    - EstadoSolicitud: `StatusRequest` número correspondiente al estado de la solicitud de descarga.
+    
+* Descarga/Download
+    - CodEstatus: Código de estado de la llamada.
+    - Mensaje: Pequeña descripcion del código de estado.
+
+
+Respuestas de lo servicios:
+
+| Servicio          | Code | Descripción                                                                             |
+|-------------------|------|-----------------------------------------------------------------------------------------|
+| All               | 300  | Usuario no válido                                                                       |
+| All               | 301  | XML mal formado                                                                         |
+| All               | 302  | Sello mal formado                                                                       |
+| All               | 303  | Sello no corresponde con RfcSolicitante                                                 |
+| All               | 304  | Certificado revocado o caduco                                                           |
+| All               | 305  | Certificado inválido                                                                    |
+| All               | 5000 | Solicitud recibida con éxito                                                            |
+| Query             | 5001 | Tercero no autorizado                                                                   |
+| Query             | 5002 | Se agotó las solicitudes de por vida: Máximo para solicitudes con los mismos parámetros |
+| Verify & download | 5004 | No se encontró la solicitud                                                             |
+| Query             | 5005 | Solicitud duplicada: Si existe una solicitud vigente con los mismos parámetros          |
+| Query             | 5006 | Error interno en el proceso                                                             |
+| Verify & download | 404  | Error no controlado: Reintentar más tarde la petición                                   |
