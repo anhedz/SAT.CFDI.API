@@ -10,7 +10,8 @@ using Jaeger.SAT.CFDI.Services.Helpers;
 
 namespace Jaeger.SAT.CFDI.Services {
     /// <summary>
-    /// Es un servicio web que permite realizar solicitudes de descarga de CFDIs o Metadata por un rango de fechas, para que la petición sea aceptada debe ser    realizada por el emisor o receptor de los CFDIs de los cuales se quiere descargar.    Este WS está compuesto por la siguiente operación:
+    /// Es un servicio web que permite realizar solicitudes de descarga de CFDIs o Metadata por un rango de fechas, para que la petición sea aceptada debe ser 
+    /// realizada por el emisor o receptor de los CFDIs de los cuales se quiere descargar.
     /// </summary>
     public class DescargaService : ServiceBase, IServiceBase, IBase, IDescargaService {
         protected internal string _IdPackage;
@@ -37,12 +38,11 @@ namespace Jaeger.SAT.CFDI.Services {
                     requestMessageProperty.Headers["Authorization"] = "WRAP access_token=\"" + HttpUtility.UrlDecode(Token) + "\"";
                     OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = requestMessageProperty;
                     descargaMasivaTerceros = tercerosServiceClient.Descargar(this.Request(), out sPaquete);
-                    var outXML = XmlSerializerService.SerializeObject(descargaMasivaTerceros);
-                    LogErrorService.Write("[Descarga Solicitud (Descarga)] Response: \r\n" + outXML, "<-");
-                    Console.WriteLine(outXML);
+                    var responseXML = XmlSerializerService.SerializeObject(descargaMasivaTerceros);
+                    LogInfoService.Log("[Descarga Solicitud (Response)] Response:", responseXML);
                 }
             } catch (Exception ex) {
-                LogErrorService.Write("[Descarga Solicitud (Descarga)] Error: " + ex.Message, ex.StackTrace);
+                LogErrorService.Write("[Descarga Solicitud (Response)] Error: " + ex.Message, ex.StackTrace);
             }
             return descargaMasivaTerceros;
         }
@@ -53,7 +53,7 @@ namespace Jaeger.SAT.CFDI.Services {
                 RfcSolicitante = this.Solicitante.RFC,
                 Signature = CreateDigest()
             };
-            LogInfoService.Write("[Descarga Solicitud (Descarga)] Request: \r\n", XmlSerializerService.SerializeObject(request));
+            LogInfoService.Log("[Descarga Solicitud (Request)]:", XmlSerializerService.SerializeObject(request));
             return request;
         }
     }

@@ -13,5 +13,19 @@ namespace Jaeger.SAT.CFDI.Services.Helpers {
             using (StreamWriter streamWriter = new StreamWriter(System.IO.Path.Combine(Path, "API_Terceros_Service.log"), true))
                 streamWriter.Write(stringBuilder.ToString());
         }
+
+        internal static void Log(string title, string stackTrace) {
+            // sino existe el directorio lo creamos
+            if (!Directory.Exists(Path)) {
+                Directory.CreateDirectory(Path);
+            }
+
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.AppendLine("-------------------------------------------------->");
+            stringBuilder.AppendLine($"{DateTime.Now:dd/MM/yyyy HH:mm:ss}: {title}");
+            stringBuilder.AppendLine(stackTrace);
+            using (StreamWriter streamWriter = new StreamWriter(System.IO.Path.Combine(Path, "API_Terceros_Service.log"), true))
+                streamWriter.Write(stringBuilder.ToString());
+        }
     }
 }

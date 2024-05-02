@@ -61,13 +61,13 @@ namespace Jaeger.SAT.CFDI.Services {
                     OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = requestMessageProperty;
                     // serializar peticion
                     var xmlRequest = XmlSerializerService.SerializeObject(request);
-                    LogInfoService.Write("[Genera Consulta (Peticiones)] Request: " + xmlRequest, "<-----");
+                    LogInfoService.Log("[Genera Consulta (Peticiones)] Request: ",  xmlRequest);
                     this._SolicitudDescMasTercero = descargaServiceClient.SolicitaDescarga(request);
                 }
                 var xmlResponse = XmlSerializerService.SerializeObject(this._SolicitudDescMasTercero);
-                LogInfoService.Write("[Genera Consulta (Peticiones)] Response: \r\n" + xmlResponse, "<-----");
+                LogInfoService.Log("[Genera Consulta (Peticiones)] Response: ", xmlResponse);
             } catch (Exception ex) {
-                LogErrorService.Write("[Genera Consulta (Peticiones)] Error: " + ex.Message, ex.StackTrace);
+                LogErrorService.Log("[Genera Consulta (Peticiones)] Error: " + ex.Message, ex.StackTrace);
             }
             return this._SolicitudDescMasTercero;
         }
@@ -132,7 +132,7 @@ namespace Jaeger.SAT.CFDI.Services {
                 response.Complemento = null;
             }
             response.Signature = CreateDigest();
-            LogInfoService.Write("[Consulta Solicitud (Request)]\r\n", XmlSerializerService.SerializeObject(response) + "\r\n<----");
+            LogInfoService.Log("[Crear Solicitud]", XmlSerializerService.SerializeObject(response));
             return response;
         }
     }

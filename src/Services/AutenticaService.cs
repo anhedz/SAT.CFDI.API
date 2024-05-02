@@ -31,13 +31,12 @@ namespace Jaeger.SAT.CFDI.Services {
                 var x509Certificate2 = new X509Certificate2(this.Solicitante.GetBytes(), this.Solicitante.PasswordKey, X509KeyStorageFlags.DefaultKeySet);
                 autenticacionClient.ClientCredentials.ClientCertificate.Certificate = x509Certificate2;
                 this.Token = autenticacionClient.Autentica();
-                LogInfoService.Write("[Token]: " + this.Token, "");
-                Console.WriteLine("token: " + this.Token);
+                LogInfoService.Log("[Genera Token] Autentica", $"[Token]: {this.Token}");
                 return this.Token;
             } catch (FaultException ex) {
-                LogErrorService.Write("[Genera Token] Error: " + ex.Message, ex.StackTrace);
+                LogErrorService.Log("[Genera Token] Error: " + ex.Message, ex.StackTrace);
             } catch (Exception ex) {
-                LogErrorService.Write("[Genera Token] Error: " + ex.Message, ex.StackTrace);
+                LogErrorService.Log("[Genera Token] Error: " + ex.Message, ex.StackTrace);
             }
             return string.Empty;
         }

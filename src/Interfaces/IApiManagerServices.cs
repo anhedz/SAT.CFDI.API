@@ -29,5 +29,7 @@
         IVerifyResponse Verifica();
 
         IVerifyResponse Descargar();
+
+        IDownloadResponse Descargar(string package);
     }
 }
