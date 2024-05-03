@@ -6,16 +6,16 @@ using Jaeger.SAT.CFDI.Services.Helpers;
 using Jaeger.SAT.CFDI.Services.Interfaces;
 
 namespace Jaeger.SAT.CFDI.Services {
-    public class ApiManagerServices : ApiManagerServicesBase, IBase, IApiManagerServices {
+    public class ManagerServices : ApiManagerServicesBase, IBase, IApiManagerServices {
         #region declaraciones
         protected internal ISolicitud _Solicitud;
-        protected internal IQueryResponse _SolicitudResponse;
-        protected internal IVerifyResponse _VerifyResponse;
+        //protected internal IQueryResponse _SolicitudResponse;
+        //protected internal IVerifyResponse _VerifyResponse;
         protected internal bool _IsAutenticate = false;
         protected internal DateTime _LastUpdateTime = DateTime.Now;
         #endregion
 
-        public ApiManagerServices(ISolicitante solicitante) : base() {
+        public ManagerServices(ISolicitante solicitante) : base() {
             this.Token = null;
             this.Solicitante = solicitante;
             this._IsAutenticate = false;
@@ -37,7 +37,7 @@ namespace Jaeger.SAT.CFDI.Services {
             if (!string.IsNullOrEmpty(this.Token)) {
                 if (!(this._LastUpdateTime > DateTime.Now)) {
                     this.CodeError = new CodeError(0, "Token expirado");
-                    LogErrorService.Write("Token expirado", this._LastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
+                    LogInfoService.Log("Autenticacion", $"Token expirado {this._LastUpdateTime:dd-MM-yyyyThh:mm:ss}");
                 } else {
                     return true;
                 }
@@ -45,17 +45,16 @@ namespace Jaeger.SAT.CFDI.Services {
 
             this.Token = this._AutenticaService.GeneraToken();
             this._LastUpdateTime = DateTime.Now.AddMinutes(4);
-            LogErrorService.Write("Token expira en: " + this._LastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"), "Autenticacion");
+            LogInfoService.Log("Autenticacion", $"Token expira en: {this._LastUpdateTime:dd-MM-yyyyThh:mm:ss}");
             if (string.IsNullOrEmpty(this.Token)) {
                 this.Token = null;
                 this.CodeError = new CodeError(0, "Error de autenticación");
-                LogErrorService.Write("Error de autenticación", this._LastUpdateTime.ToString("dd-MM-yyyyThh:mm:ss"));
+                LogErrorService.Write("Autenticacion", $"Error de autenticación {this._LastUpdateTime:dd-MM-yyyyThh:mm:ss}");
                 this._IsAutenticate = false;
                 return false;
             }
 
             this._IsAutenticate = true;
-
             return this._IsAutenticate;
         }
 
@@ -70,11 +69,10 @@ namespace Jaeger.SAT.CFDI.Services {
                     this.CodeError = new CodeError(0, "Error de autenticación");
                 }
             }
-            this._SolicitudResponse = this._ConsultaService
-                .AddToken(this.Token)
-                .AddSolicitud(this._Solicitud).Execute();
+            // crear solicitud
+            IQueryResponse _SolicitudResponse = this._ConsultaService.AddToken(this.Token).AddSolicitud(this._Solicitud).Execute();
 
-            return this._SolicitudResponse;
+            return _SolicitudResponse;
         }
 
         public IVerifyResponse Verifica() {
@@ -90,11 +88,11 @@ namespace Jaeger.SAT.CFDI.Services {
                 }
             }
 
-            this._VerifyResponse = this._VerificaService
+            IVerifyResponse _VerifyResponse = this._VerificaService
                     .AddIdSolicitud(this._Solicitud.IdSolicitud)
                     .AddToken(this.Token).Execute();
 
-            return this._VerifyResponse;
+            return _VerifyResponse;
         }
 
         public IVerifyResponse Descargar() {
@@ -111,43 +109,73 @@ namespace Jaeger.SAT.CFDI.Services {
 
             this._DescargaService.AddToken(this.Token);
 
-            if (this._VerifyResponse != null) {
-                if (this._VerifyResponse.PackagesIds != null) {
-                    if (this._VerifyResponse.PackagesIds.Count > 0) {
-                        LogErrorService.Write(this._VerifyResponse.StatusCode.Message, "");
+            //if (this._VerifyResponse != null) {
+            //    if (this._VerifyResponse.PackagesIds != null) {
+            //        if (this._VerifyResponse.PackagesIds.Count > 0) {
+            //            LogErrorService.Write(this._VerifyResponse.StatusCode.Message, "");
 
-                        foreach (var package in this._VerifyResponse.PackagesIds) {
-                            Stream stream = null;
-                            this._DescargaService.AddIdPaquete(package);
-                            var responseDescarga = this._DescargaService.Execute(ref stream);
-                            if (this._VerifyResponse.StatusRequest.IsAccepted()) { }
-                            IDownloadResponse downloadResponse = new SolicitudDescarga()
-                                            .AddIdPackage(package)
-                                            .AddStatusCode(new StatusCode(responseDescarga.CodEstatus, responseDescarga.Mensaje));
+            //            foreach (var package in this._VerifyResponse.PackagesIds) {
+            //                Stream stream = null;
+            //                this._DescargaService.AddIdPaquete(package);
+            //                var responseDescarga = this._DescargaService.Execute(ref stream);
+            //                if (this._VerifyResponse.StatusRequest.IsAccepted()) { }
+            //                IDownloadResponse downloadResponse = new SolicitudDescarga()
+            //                                .AddIdPackage(package)
+            //                                .AddStatusCode(new StatusCode(responseDescarga.CodEstatus, responseDescarga.Mensaje));
 
-                            LogErrorService.Write(responseDescarga.Mensaje, responseDescarga.CodEstatus);
+            //                LogErrorService.Write(responseDescarga.Mensaje, responseDescarga.CodEstatus);
 
-                            var pathZip = package;
-                            // si el codigo de respuesta es 5008
-                            if (downloadResponse.StatusCode.Code != 5008) {
-                                pathZip = this.ProcessFile(stream, package);
-                            } else {
-                                LogErrorService.Write($"No se pudo descargar el paquete: {package}", "APIManager-Descargar");
-                            }
+            //                var pathZip = package;
+            //                // si el codigo de respuesta es 5008
+            //                if (downloadResponse.StatusCode.Code != 5008) {
+            //                    pathZip = this.ProcessFile(stream, package);
+            //                } else {
+            //                    LogErrorService.Write($"No se pudo descargar el paquete: {package}", "APIManager-Descargar");
+            //                }
 
-                            downloadResponse.AddPath(pathZip);
+            //                downloadResponse.AddPath(pathZip);
 
-                            // agregar paquete
-                            this._VerifyResponse.AddPackage(downloadResponse);
-                        }
-                    }
-                }
-            }
-            return this._VerifyResponse;
+            //                // agregar paquete
+            //                this._VerifyResponse.AddPackage(downloadResponse);
+            //            }
+            //        }
+            //    }
+            //}
+            //return this._VerifyResponse;
+            return null;
         }
 
         public IDownloadResponse Descargar(string package) {
-            return null;
+            if (this._DescargaService == null) {
+                this._DescargaService = new DescargaService();
+                this._DescargaService.AddConfiguration(this.Configuration).AddSolicitante(this.Solicitante);
+            }
+
+            if (this.Autenticacion() == false) {
+                Console.WriteLine("No se puede autenticar");
+                LogErrorService.Write("No se puede autenticar", "");
+                return null;
+            }
+
+            this._DescargaService.AddToken(this.Token);
+
+            this._DescargaService.AddIdPaquete(package);
+            Stream stream = null;
+            var responseDescarga = this._DescargaService.Execute(ref stream);
+            IDownloadResponse downloadResponse = new SolicitudDescarga()
+                            .AddIdPackage(package)
+                            .AddStatusCode(new StatusCode(responseDescarga.CodEstatus, responseDescarga.Mensaje));
+            // escribir
+            LogErrorService.Write(responseDescarga.Mensaje, responseDescarga.CodEstatus);
+            // si la solicitud de descarga es aceptada procedemos a descargar el paquete
+            if (downloadResponse.StatusCode.IsAccepted()) {
+                var pathZip = this.ProcessFile(stream, package);
+                downloadResponse.AddPath(pathZip);
+            } else { 
+                LogErrorService.Log("APIManager-Descargar", $"No se pudo descargar el paquete: {package} StatusCode: {downloadResponse.StatusCode.Code}, mensaje: {downloadResponse.StatusCode.Message}");
+            }
+
+            return downloadResponse;
         }
 
         internal string ProcessFile(Stream package, string fileName) {

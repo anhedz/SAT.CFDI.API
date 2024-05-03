@@ -140,6 +140,7 @@
     <Compile Include="Interfaces\IVerificaService.cs" />
     <Compile Include="Interfaces\IVerifyResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ManagerServices.cs" />
     <Compile Include="Services\ApiManagerServices.cs" />
     <Compile Include="Services\AutenticaService.cs" />
     <Compile Include="Services\ConsultaService.cs" />
