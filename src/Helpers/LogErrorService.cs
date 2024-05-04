@@ -2,6 +2,9 @@
 using System.IO;
 
 namespace Jaeger.SAT.CFDI.Services.Helpers {
+    /// <summary>
+    /// Clase para looger de errores
+    /// </summary>
     internal class LogErrorService {
         static readonly string Path = @"C:\Jaeger\Jaeger.Log";
 

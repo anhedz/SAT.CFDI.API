@@ -29,6 +29,7 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
             }
         }
 
+        #region propiedades
         /// <summary>
         /// Contains the "EstadoSolicitud" value
         /// obtener el numero correspondiente al estado de la solicitud de descarga, Estados de la solicitud: Aceptada=1, EnProceso=2, Terminada=3, Error=4, Rechazada=5, Vencida=6
@@ -44,7 +45,9 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
         public string Message {
             get { return this._values[this._code]; }
         }
+        #endregion
 
+        #region metodos publicos
         /// <summary>
         /// Solicitud Acepatada
         /// </summary>
@@ -85,5 +88,6 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
         public bool IsExpired() {
             return this._code == 6;
         }
+        #endregion
     }
 }

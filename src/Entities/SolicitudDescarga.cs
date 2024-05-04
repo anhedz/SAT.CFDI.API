@@ -23,11 +23,17 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
             return this;
         }
 
+        /// <summary>
+        /// agregar PATH de descarga
+        /// </summary>
         public IDownloadResponse AddPath(string path) {
             this.Path = path;
             return this;
         }
 
+        /// <summary>
+        /// agregar StatusCode
+        /// </summary>
         public IDownloadResponse AddStatusCode(IStatusCode statusCode) {
             this.StatusCode = statusCode;
             return this;

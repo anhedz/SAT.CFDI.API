@@ -52,9 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstracts\ApiManagerServicesBase.cs" />
-    <Compile Include="Abstracts\Base.cs" />
-    <Compile Include="Abstracts\ServiceBase.cs" />
+    <Compile Include="Services\Abstracts\ApiManagerServicesBase.cs" />
+    <Compile Include="Services\Abstracts\Base.cs" />
+    <Compile Include="Services\Abstracts\ServiceBase.cs" />
     <Compile Include="API\Abstracts\PropertyChangeImplementation.cs" />
     <Compile Include="API\Autenticacion\AutenticacionClient.cs" />
     <Compile Include="API\Autenticacion\IAutenticacion.cs" />

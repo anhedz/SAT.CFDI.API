@@ -2,6 +2,9 @@
 
 namespace Jaeger.SAT.CFDI.Services.Builder {
     public interface IConfigurationBuilder {
+        /// <summary>
+        /// path de descarga
+        /// </summary>
         IConfigurationDonwloadPathBuilder PathDownload(string path);
     }
 

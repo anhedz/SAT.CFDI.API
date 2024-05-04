@@ -30,6 +30,9 @@ namespace Jaeger.SAT.CFDI.Services.Helpers {
             return this;
         }
 
+        /// <summary>
+        /// Agregar password
+        /// </summary>
         public Signer AddPassword(string password) {
             this._Password = password;
             return this;

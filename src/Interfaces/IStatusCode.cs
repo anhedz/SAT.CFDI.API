@@ -1,6 +1,13 @@
 ﻿namespace Jaeger.SAT.CFDI.Services.Interfaces {
     public interface IStatusCode {
+        /// <summary>
+        /// obtener codigo de status
+        /// </summary>
         int Code { get; }
+
+        /// <summary>
+        /// obtener mensaje
+        /// </summary>
         string Message { get; }
 
         /// <summary>

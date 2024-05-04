@@ -2,6 +2,9 @@
 using System.IO;
 
 namespace Jaeger.SAT.CFDI.Services.Helpers {
+    /// <summary>
+    /// Clase para looger de informacion
+    /// </summary>
     internal class LogInfoService {
         static readonly string path = @"C:\Jaeger\Jaeger.Log";
 

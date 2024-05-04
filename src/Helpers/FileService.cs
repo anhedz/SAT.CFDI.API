@@ -3,10 +3,19 @@ using System.IO;
 
 namespace Jaeger.SAT.CFDI.Services.Helpers {
     internal static class FileService {
+        /// <summary>
+        /// archivo en uso
+        /// </summary>
+        /// <returns>verdadero si el archivo esta siendo utilizado por otro proceso</returns>
         public static bool IsFileinUse(string file) {
             return IsFileinUse(new FileInfo(file));
         }
 
+        /// <summary>
+        /// metodo estatico para comprobar si el archivo esta siendo utilizado por otro proceso
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
         public static bool IsFileinUse(FileInfo file) {
             FileStream fileStream = null;
             try {

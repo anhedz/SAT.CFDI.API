@@ -56,7 +56,7 @@ namespace Jaeger.SAT.CFDI.Services.Entities {
         public List<IDownloadResponse> DownloadsPackages { get; internal set; }
         #endregion
 
-        #region class build
+        #region class builder
         public IVerifyResponse AddStatusCode(IStatusCode statusCode) {
             this._StatusCode = statusCode;
             return this;
