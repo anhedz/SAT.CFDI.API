@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
-using Jaeger.SAT.CFDI.Services.API.Base;
-using Jaeger.SAT.CFDI.Services.Entities;
-using Jaeger.SAT.CFDI.Services.Helpers;
-using Jaeger.SAT.CFDI.Services.Interfaces;
+using Jaeger.SAT.API.Services.Entities;
+using Jaeger.SAT.API.Services.Helpers;
+using Jaeger.SAT.API.Services.Interfaces;
+using Jaeger.SAT.API.WebService.Base;
 
-namespace Jaeger.SAT.CFDI.Services.Abstracts {
+namespace Jaeger.SAT.API.Services.Abstracts {
     public abstract class ServiceBase : Base, IServiceBase, IBase {
         #region declaraciones
         private string _Token;
@@ -16,7 +16,7 @@ namespace Jaeger.SAT.CFDI.Services.Abstracts {
         public ServiceBase() : base() { }
 
         protected internal ServiceBase AddURL(string url) {
-            this._urlEndpointAddres = url;
+            _urlEndpointAddres = url;
             return this;
         }
 
@@ -68,7 +68,7 @@ namespace Jaeger.SAT.CFDI.Services.Abstracts {
         internal virtual SignatureType CreateDigest() {
             var signatureType = new SignatureType();
             try {
-                var x509Certificate2 = new X509Certificate2(this.Solicitante.GetBytes(), this.Solicitante.PasswordKey, X509KeyStorageFlags.DefaultKeySet);
+                var x509Certificate2 = new X509Certificate2(Solicitante.GetBytes(), Solicitante.PasswordKey, X509KeyStorageFlags.DefaultKeySet);
                 signatureType.SignedInfo = new SignedInfoType {
                     CanonicalizationMethod = new CanonicalizationMethodType()
                 };
@@ -93,7 +93,7 @@ namespace Jaeger.SAT.CFDI.Services.Abstracts {
                     }
                 };
             } catch (Exception ex) {
-                this.CodeError = new CodeError(0, "[Generar Token Consulta SignatureType] Error: " + ex.Message);
+                CodeError = new CodeError(0, "[Generar Token Consulta SignatureType] Error: " + ex.Message);
                 LogErrorService.Write("[Generar Token Consulta SignatureType] Error: " + ex.Message, ex.StackTrace);
             }
             return signatureType;

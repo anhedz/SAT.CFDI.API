@@ -1,20 +1,20 @@
-﻿using Jaeger.SAT.CFDI.Services.Entities;
-using Jaeger.SAT.CFDI.Services.Interfaces;
+﻿using Jaeger.SAT.API.Services.Interfaces;
+using Jaeger.SAT.API.Services.Entities;
 
-namespace Jaeger.SAT.CFDI.Services.Abstracts {
+namespace Jaeger.SAT.API.Services.Abstracts {
     /// <summary>
     /// Base de Servicio
     /// </summary>
     public abstract class Base : IBase {
         public Base() {
-            this.Configuration = new Configuration();
+            Configuration = new Configuration();
         }
 
         /// <summary>
         /// Agregar informacion del solicitante
         /// </summary>
         public IBase AddSolicitante(ISolicitante solicitante) {
-            this.Solicitante = solicitante;
+            Solicitante = solicitante;
             return this;
         }
 
@@ -22,7 +22,7 @@ namespace Jaeger.SAT.CFDI.Services.Abstracts {
         /// Agregar objeto de configuracion
         /// </summary>
         public IBase AddConfiguration(IConfiguration configuration) {
-            this.Configuration = configuration;
+            Configuration = configuration;
             return this;
         }
 

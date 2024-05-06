@@ -11,6 +11,36 @@ El presente documento contiene la información necesaria para conocer y utilizar
 los siguientes elementos que forman parte del Servicio de Solicitud de Descarga 
 Masiva.
 
+SAT
+└── API
+    ├── WebService
+    │   ├── Abstracts
+    │   ├── Base
+    │   ├── Autenticacion
+    │   ├── Consulta
+    │   ├── Verificacion
+    │   └── Descargas
+    ├── Services
+    │   ├── Abstracts
+    │   ├── Entities
+    │   ├── Enumerations
+    │   ├── Helpers
+    │   ├── Interfaces
+    │   │   ├── .IManagerService
+    │   │   ├── .IAutenticaService
+    │   │   ├── .IConsultaService
+    │   │   ├── .IVerificaService
+    │   │   ├── .IDescargaService
+    │   │   └── .BaseService
+    │   ├── Builder
+    │   ├── .AutenticaService
+    │   ├── .ConsultaService
+    │   └── .VerificaService
+    ├── CFDI
+    │   └── .ManagerService
+    └── CRET
+        └── .ManagerService
+
 # Códigos de servicios
 
 Los 3 servicios de consumo `Consulta/Query`, `Verificación/Verify` y `Descarga/Download` entregan información predefinida.

@@ -1,30 +1,21 @@
-﻿using Jaeger.SAT.CFDI.Services;
-using Jaeger.SAT.CFDI.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Jaeger.SAT.API.Services.Interfaces;
 
 namespace Jaeger.Repositorio.Forms {
     public partial class MainForm : Form {
         Timer timer;
-        private IApiManagerServices _Service;
+        private IManagerServices _Service;
         private ISolicitante _Solicitante;
-        private Color colorInvalido;
-        private Color colorValido;
-        private Color colorEditable;
 
         public MainForm() {
             InitializeComponent();
         }
 
         private void MainForm_Load(object sender, EventArgs e) {
-            //this._Service = new ManagerServices();
+            this._Service = new Jaeger.SAT.API.CFDI.Services.ManagerServices(null);
+            
             this.timer = new Timer();
             this.timer.Interval = 1000;
             this.timer.Tick += Timer_Tick;
@@ -60,6 +51,11 @@ namespace Jaeger.Repositorio.Forms {
             } else {
                 this.Password.PasswordChar = '\0';
             }
+        }
+
+        private void Verificar_Click(object sender, EventArgs e) {
+            var s0 = new SAT.API.CFDI.Services.ManagerServices(null);
+            s0.Verifica();
         }
     }
 }

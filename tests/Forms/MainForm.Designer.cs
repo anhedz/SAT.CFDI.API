@@ -29,6 +29,7 @@
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.ProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.SolicitudGroupBox = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblTipoSolicitud = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lblFechaFinal = new System.Windows.Forms.Label();
@@ -50,6 +51,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.SolicitanteRFC = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.CheckPassword = new System.Windows.Forms.CheckBox();
             this.buttonCER = new System.Windows.Forms.Button();
             this.PathCer = new System.Windows.Forms.TextBox();
@@ -57,8 +60,19 @@
             this.lblCertificado = new System.Windows.Forms.Label();
             this.lblPassword1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.SolicitanteRFC = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.Verificar = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Header)).BeginInit();
             this.StatusBar.SuspendLayout();
             this.SolicitudGroupBox.SuspendLayout();
@@ -66,6 +80,12 @@
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // Header
@@ -94,7 +114,7 @@
             this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel,
             this.ProgressBar});
-            this.StatusBar.Location = new System.Drawing.Point(0, 335);
+            this.StatusBar.Location = new System.Drawing.Point(0, 392);
             this.StatusBar.Name = "StatusBar";
             this.StatusBar.Size = new System.Drawing.Size(800, 22);
             this.StatusBar.SizingGrip = false;
@@ -115,6 +135,7 @@
             // 
             // SolicitudGroupBox
             // 
+            this.SolicitudGroupBox.Controls.Add(this.button1);
             this.SolicitudGroupBox.Controls.Add(this.lblTipoSolicitud);
             this.SolicitudGroupBox.Controls.Add(this.comboBox1);
             this.SolicitudGroupBox.Controls.Add(this.lblFechaFinal);
@@ -133,17 +154,27 @@
             this.SolicitudGroupBox.Controls.Add(this.FiltrarRFC);
             this.SolicitudGroupBox.Controls.Add(this.FechaInicial);
             this.SolicitudGroupBox.Controls.Add(this.FechaFinal);
-            this.SolicitudGroupBox.Location = new System.Drawing.Point(6, 6);
+            this.SolicitudGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SolicitudGroupBox.Location = new System.Drawing.Point(3, 3);
             this.SolicitudGroupBox.Name = "SolicitudGroupBox";
-            this.SolicitudGroupBox.Size = new System.Drawing.Size(294, 259);
+            this.SolicitudGroupBox.Size = new System.Drawing.Size(290, 320);
             this.SolicitudGroupBox.TabIndex = 3;
             this.SolicitudGroupBox.TabStop = false;
             this.SolicitudGroupBox.Text = "Solicitud";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(204, 286);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Enviar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // lblTipoSolicitud
             // 
             this.lblTipoSolicitud.AutoSize = true;
-            this.lblTipoSolicitud.Location = new System.Drawing.Point(12, 52);
+            this.lblTipoSolicitud.Location = new System.Drawing.Point(12, 74);
             this.lblTipoSolicitud.Name = "lblTipoSolicitud";
             this.lblTipoSolicitud.Size = new System.Drawing.Size(95, 13);
             this.lblTipoSolicitud.TabIndex = 32;
@@ -151,7 +182,7 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.Location = new System.Drawing.Point(113, 48);
+            this.comboBox1.Location = new System.Drawing.Point(113, 70);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(166, 21);
             this.comboBox1.TabIndex = 33;
@@ -159,7 +190,7 @@
             // lblFechaFinal
             // 
             this.lblFechaFinal.AutoSize = true;
-            this.lblFechaFinal.Location = new System.Drawing.Point(12, 104);
+            this.lblFechaFinal.Location = new System.Drawing.Point(12, 126);
             this.lblFechaFinal.Name = "lblFechaFinal";
             this.lblFechaFinal.Size = new System.Drawing.Size(65, 13);
             this.lblFechaFinal.TabIndex = 21;
@@ -168,7 +199,7 @@
             // lblFechaInicial
             // 
             this.lblFechaInicial.AutoSize = true;
-            this.lblFechaInicial.Location = new System.Drawing.Point(12, 78);
+            this.lblFechaInicial.Location = new System.Drawing.Point(12, 100);
             this.lblFechaInicial.Name = "lblFechaInicial";
             this.lblFechaInicial.Size = new System.Drawing.Size(70, 13);
             this.lblFechaInicial.TabIndex = 16;
@@ -178,7 +209,7 @@
             // 
             this.HoraFinal.CustomFormat = "HH:mm:ss";
             this.HoraFinal.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.HoraFinal.Location = new System.Drawing.Point(186, 100);
+            this.HoraFinal.Location = new System.Drawing.Point(186, 122);
             this.HoraFinal.Name = "HoraFinal";
             this.HoraFinal.ShowUpDown = true;
             this.HoraFinal.Size = new System.Drawing.Size(93, 20);
@@ -190,7 +221,7 @@
             // 
             this.HoraInicial.CustomFormat = "HH:mm:ss";
             this.HoraInicial.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.HoraInicial.Location = new System.Drawing.Point(186, 74);
+            this.HoraInicial.Location = new System.Drawing.Point(186, 96);
             this.HoraInicial.Name = "HoraInicial";
             this.HoraInicial.ShowUpDown = true;
             this.HoraInicial.Size = new System.Drawing.Size(93, 20);
@@ -201,7 +232,7 @@
             // lblTipo
             // 
             this.lblTipo.AutoSize = true;
-            this.lblTipo.Location = new System.Drawing.Point(12, 26);
+            this.lblTipo.Location = new System.Drawing.Point(12, 48);
             this.lblTipo.Name = "lblTipo";
             this.lblTipo.Size = new System.Drawing.Size(125, 13);
             this.lblTipo.TabIndex = 17;
@@ -209,7 +240,7 @@
             // 
             // Estado
             // 
-            this.Estado.Location = new System.Drawing.Point(148, 130);
+            this.Estado.Location = new System.Drawing.Point(148, 152);
             this.Estado.Name = "Estado";
             this.Estado.Size = new System.Drawing.Size(131, 21);
             this.Estado.TabIndex = 25;
@@ -217,7 +248,7 @@
             // lblRFCTerceros
             // 
             this.lblRFCTerceros.AutoSize = true;
-            this.lblRFCTerceros.Location = new System.Drawing.Point(12, 230);
+            this.lblRFCTerceros.Location = new System.Drawing.Point(12, 252);
             this.lblRFCTerceros.Name = "lblRFCTerceros";
             this.lblRFCTerceros.Size = new System.Drawing.Size(117, 13);
             this.lblRFCTerceros.TabIndex = 30;
@@ -225,14 +256,14 @@
             // 
             // TipoComplemento
             // 
-            this.TipoComplemento.Location = new System.Drawing.Point(12, 174);
+            this.TipoComplemento.Location = new System.Drawing.Point(12, 196);
             this.TipoComplemento.Name = "TipoComplemento";
             this.TipoComplemento.Size = new System.Drawing.Size(267, 21);
             this.TipoComplemento.TabIndex = 27;
             // 
             // RFCTerceros
             // 
-            this.RFCTerceros.Location = new System.Drawing.Point(158, 228);
+            this.RFCTerceros.Location = new System.Drawing.Point(158, 250);
             this.RFCTerceros.MaxLength = 14;
             this.RFCTerceros.Name = "RFCTerceros";
             this.RFCTerceros.Size = new System.Drawing.Size(121, 20);
@@ -242,7 +273,7 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(12, 132);
+            this.lblEstado.Location = new System.Drawing.Point(12, 154);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(122, 13);
             this.lblEstado.TabIndex = 24;
@@ -251,7 +282,7 @@
             // lblTipoComplemento
             // 
             this.lblTipoComplemento.AutoSize = true;
-            this.lblTipoComplemento.Location = new System.Drawing.Point(12, 155);
+            this.lblTipoComplemento.Location = new System.Drawing.Point(12, 177);
             this.lblTipoComplemento.Name = "lblTipoComplemento";
             this.lblTipoComplemento.Size = new System.Drawing.Size(182, 13);
             this.lblTipoComplemento.TabIndex = 26;
@@ -260,7 +291,7 @@
             // lblFiltrarRFC
             // 
             this.lblFiltrarRFC.AutoSize = true;
-            this.lblFiltrarRFC.Location = new System.Drawing.Point(12, 203);
+            this.lblFiltrarRFC.Location = new System.Drawing.Point(12, 225);
             this.lblFiltrarRFC.Name = "lblFiltrarRFC";
             this.lblFiltrarRFC.Size = new System.Drawing.Size(65, 13);
             this.lblFiltrarRFC.TabIndex = 28;
@@ -268,14 +299,14 @@
             // 
             // SubTipoComprobante
             // 
-            this.SubTipoComprobante.Location = new System.Drawing.Point(143, 22);
+            this.SubTipoComprobante.Location = new System.Drawing.Point(143, 44);
             this.SubTipoComprobante.Name = "SubTipoComprobante";
             this.SubTipoComprobante.Size = new System.Drawing.Size(136, 21);
             this.SubTipoComprobante.TabIndex = 19;
             // 
             // FiltrarRFC
             // 
-            this.FiltrarRFC.Location = new System.Drawing.Point(158, 202);
+            this.FiltrarRFC.Location = new System.Drawing.Point(158, 224);
             this.FiltrarRFC.MaxLength = 14;
             this.FiltrarRFC.Name = "FiltrarRFC";
             this.FiltrarRFC.Size = new System.Drawing.Size(121, 20);
@@ -285,7 +316,7 @@
             // FechaInicial
             // 
             this.FechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.FechaInicial.Location = new System.Drawing.Point(87, 74);
+            this.FechaInicial.Location = new System.Drawing.Point(87, 96);
             this.FechaInicial.Name = "FechaInicial";
             this.FechaInicial.Size = new System.Drawing.Size(95, 20);
             this.FechaInicial.TabIndex = 18;
@@ -295,7 +326,7 @@
             // FechaFinal
             // 
             this.FechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.FechaFinal.Location = new System.Drawing.Point(87, 100);
+            this.FechaFinal.Location = new System.Drawing.Point(87, 122);
             this.FechaFinal.Name = "FechaFinal";
             this.FechaFinal.Size = new System.Drawing.Size(95, 20);
             this.FechaFinal.TabIndex = 22;
@@ -306,11 +337,13 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.tabControl1.Location = new System.Drawing.Point(0, 40);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(318, 295);
+            this.tabControl1.Size = new System.Drawing.Size(304, 352);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPage1
@@ -319,7 +352,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(310, 269);
+            this.tabPage1.Size = new System.Drawing.Size(296, 326);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Solicitante";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -337,10 +370,30 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(304, 263);
+            this.groupBox1.Size = new System.Drawing.Size(290, 320);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Certificado";
+            // 
+            // SolicitanteRFC
+            // 
+            this.SolicitanteRFC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SolicitanteRFC.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.SolicitanteRFC.Location = new System.Drawing.Point(6, 157);
+            this.SolicitanteRFC.MaxLength = 14;
+            this.SolicitanteRFC.Name = "SolicitanteRFC";
+            this.SolicitanteRFC.Size = new System.Drawing.Size(104, 20);
+            this.SolicitanteRFC.TabIndex = 23;
+            this.SolicitanteRFC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(6, 135);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(283, 18);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "RFC del solicitante:";
             // 
             // CheckPassword
             // 
@@ -354,7 +407,7 @@
             // buttonCER
             // 
             this.buttonCER.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCER.Location = new System.Drawing.Point(260, 70);
+            this.buttonCER.Location = new System.Drawing.Point(246, 70);
             this.buttonCER.Name = "buttonCER";
             this.buttonCER.Size = new System.Drawing.Size(29, 23);
             this.buttonCER.TabIndex = 19;
@@ -367,7 +420,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PathCer.Location = new System.Drawing.Point(6, 44);
             this.PathCer.Name = "PathCer";
-            this.PathCer.Size = new System.Drawing.Size(283, 20);
+            this.PathCer.Size = new System.Drawing.Size(269, 20);
             this.PathCer.TabIndex = 17;
             // 
             // Password
@@ -400,36 +453,148 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(310, 269);
+            this.tabPage2.Size = new System.Drawing.Size(296, 326);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Solicitud";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // SolicitanteRFC
+            // tabPage3
             // 
-            this.SolicitanteRFC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SolicitanteRFC.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.SolicitanteRFC.Location = new System.Drawing.Point(6, 157);
-            this.SolicitanteRFC.MaxLength = 14;
-            this.SolicitanteRFC.Name = "SolicitanteRFC";
-            this.SolicitanteRFC.Size = new System.Drawing.Size(118, 20);
-            this.SolicitanteRFC.TabIndex = 23;
-            this.SolicitanteRFC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tabPage3.Controls.Add(this.groupBox4);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(296, 326);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Verificar";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // groupBox4
             // 
-            this.label1.Location = new System.Drawing.Point(6, 135);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(283, 18);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "RFC del solicitante:";
+            this.groupBox4.Controls.Add(this.Verificar);
+            this.groupBox4.Controls.Add(this.comboBox2);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(3, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(290, 320);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "groupBox4";
+            // 
+            // Verificar
+            // 
+            this.Verificar.Location = new System.Drawing.Point(209, 291);
+            this.Verificar.Name = "Verificar";
+            this.Verificar.Size = new System.Drawing.Size(75, 23);
+            this.Verificar.TabIndex = 30;
+            this.Verificar.Text = "Verificar";
+            this.Verificar.UseVisualStyleBackColor = true;
+            this.Verificar.Click += new System.EventHandler(this.Verificar_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Location = new System.Drawing.Point(6, 41);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(267, 21);
+            this.comboBox2.TabIndex = 29;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(182, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Tipo de Comprobante (Complemento)";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.groupBox5);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(296, 326);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Descargar";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.button2);
+            this.groupBox5.Controls.Add(this.dataGridView1);
+            this.groupBox5.Controls.Add(this.label3);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(0, 0);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(296, 326);
+            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "groupBox5";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(215, 297);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 31;
+            this.button2.Text = "Descargar";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(8, 43);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(282, 248);
+            this.dataGridView1.TabIndex = 30;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(182, 13);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "Tipo de Comprobante (Complemento)";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox2.Location = new System.Drawing.Point(304, 40);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(496, 105);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Respuesta";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(304, 145);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(496, 247);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Logger";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(3, 16);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox1.Size = new System.Drawing.Size(490, 228);
+            this.textBox1.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 357);
+            this.ClientSize = new System.Drawing.Size(800, 414);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.StatusBar);
             this.Controls.Add(this.HeaderLabel);
@@ -448,6 +613,15 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -491,5 +665,19 @@
         private System.Windows.Forms.Label lblPassword1;
         public System.Windows.Forms.TextBox SolicitanteRFC;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.GroupBox groupBox4;
+        public System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button Verificar;
     }
 }

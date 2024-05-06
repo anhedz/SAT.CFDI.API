@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DBE32B79-1565-4977-BBFB-20333F51D0DC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Jaeger.SAT.API</RootNamespace>
+    <AssemblyName>Jaeger.SAT.CFDI.Services.API</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>sat30px.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CFDI\AutenticaService.cs" />
+    <Compile Include="CFDI\ConsultaService.cs" />
+    <Compile Include="CFDI\DescargaService.cs" />
+    <Compile Include="CFDI\VerificaService.cs" />
+    <Compile Include="CRET\AutenticaService.cs" />
+    <Compile Include="CRET\ConsultaService.cs" />
+    <Compile Include="CRET\DescargaService.cs" />
+    <Compile Include="CRET\ManagerService.cs" />
+    <Compile Include="CRET\VerificaService.cs" />
+    <Compile Include="Services\Abstracts\ManagerServiceBase.cs" />
+    <Compile Include="Services\Abstracts\Base.cs" />
+    <Compile Include="Services\Abstracts\ServiceBase.cs" />
+    <Compile Include="Services\Abstracts\ManagerService.cs" />
+    <Compile Include="WebService\Abstracts\PropertyChangeImplementation.cs" />
+    <Compile Include="WebService\Autenticacion\AutenticacionClient.cs" />
+    <Compile Include="WebService\Autenticacion\IAutenticacion.cs" />
+    <Compile Include="WebService\Autenticacion\IAutenticacionChannel.cs" />
+    <Compile Include="WebService\Base\CanonicalizationMethodType.cs" />
+    <Compile Include="WebService\Base\DigestMethodType.cs" />
+    <Compile Include="WebService\Base\KeyInfoType.cs" />
+    <Compile Include="WebService\Base\KeyValueType.cs" />
+    <Compile Include="WebService\Base\ObjectType.cs" />
+    <Compile Include="WebService\Base\ReferenceType.cs" />
+    <Compile Include="WebService\Base\RSAKeyValueType.cs" />
+    <Compile Include="WebService\Base\SignatureMethodType.cs" />
+    <Compile Include="WebService\Base\SignatureType.cs" />
+    <Compile Include="WebService\Base\SignedInfoType.cs" />
+    <Compile Include="WebService\Base\TransformType.cs" />
+    <Compile Include="WebService\Base\X509DataType.cs" />
+    <Compile Include="WebService\Base\X509IssuerSerialType.cs" />
+    <Compile Include="WebService\Consultas\EstadoComprobante.cs" />
+    <Compile Include="WebService\Consultas\ISolicitaDescargaService.cs" />
+    <Compile Include="WebService\Consultas\ISolicitaDescargaServiceChannel.cs" />
+    <Compile Include="WebService\Consultas\RespuestaSolicitudDescMasTercero.cs" />
+    <Compile Include="WebService\Consultas\SolicitaDescargaServiceClient.cs" />
+    <Compile Include="WebService\Consultas\SolicitudDescargaMasivaTercero.cs" />
+    <Compile Include="WebService\Consultas\TipoDeComprobante.cs" />
+    <Compile Include="WebService\Consultas\TipoDescargaMasivaTerceros.cs" />
+    <Compile Include="WebService\Descargas\DescargaMasivaTercerosServiceClient.cs" />
+    <Compile Include="WebService\Descargas\IDescargaMasivaTercerosService.cs" />
+    <Compile Include="WebService\Descargas\IDescargaMasivaTercerosServiceChannel.cs" />
+    <Compile Include="WebService\Descargas\PeticionDescargaMasivaTerceros.cs" />
+    <Compile Include="WebService\Descargas\PeticionDescargaMasivaTercerosEntrada.cs" />
+    <Compile Include="WebService\Descargas\RespuestaDescargaMasivaTerceros.cs" />
+    <Compile Include="WebService\Descargas\RespuestaDescargaMasivaTercerosSalida.cs" />
+    <Compile Include="WebService\Verificacion\IVerificaSolicitudDescargaService.cs" />
+    <Compile Include="WebService\Verificacion\IVerificaSolicitudDescargaServiceChannel.cs" />
+    <Compile Include="WebService\Verificacion\RespuestaVerificaSolicitudDescMasTercero.cs" />
+    <Compile Include="WebService\Verificacion\VerificaSolicitudDescargaMasivaTercero.cs" />
+    <Compile Include="WebService\Verificacion\VerificaSolicitudDescargaServiceClient.cs" />
+    <Compile Include="Services\Builder\ConfigurationBuilder.cs" />
+    <Compile Include="Services\Builder\IConfigurationBuilder.cs" />
+    <Compile Include="Services\Builder\ISolicitudBuilder.cs" />
+    <Compile Include="Services\Builder\ISolicitudValidationBuilder.cs" />
+    <Compile Include="Services\Builder\SolicitudBuilder.cs" />
+    <Compile Include="Services\Builder\SolicitudValidationBuilder.cs" />
+    <Compile Include="Services\Entities\CodeError.cs" />
+    <Compile Include="Services\Entities\CodeRequest.cs" />
+    <Compile Include="Services\Entities\Configuration.cs" />
+    <Compile Include="Services\Entities\QueryResponse.cs" />
+    <Compile Include="Services\Entities\Solicitante.cs" />
+    <Compile Include="Services\Entities\Solicitud.cs" />
+    <Compile Include="Services\Entities\SolicitudDescarga.cs" />
+    <Compile Include="Services\Entities\StatusCode.cs" />
+    <Compile Include="Services\Entities\StatusRequest.cs" />
+    <Compile Include="Services\Entities\StringValueAttribute.cs" />
+    <Compile Include="Services\Entities\VerifyResponse.cs" />
+    <Compile Include="Services\Enums\CodEstatusEnum.cs" />
+    <Compile Include="Services\Enums\EstadoComprobanteEnum.cs" />
+    <Compile Include="Services\Enums\EstadoSolicitudEnum.cs" />
+    <Compile Include="Services\Enums\TipoComprobanteEnum.cs" />
+    <Compile Include="Services\Enums\TipoConsultaEnum.cs" />
+    <Compile Include="Services\Enums\TipoDescargaEnum.cs" />
+    <Compile Include="Services\Helpers\Extensions.cs" />
+    <Compile Include="Services\Helpers\FileService.cs" />
+    <Compile Include="Services\Helpers\LogErrorService.cs" />
+    <Compile Include="Services\Helpers\LogInfoService.cs" />
+    <Compile Include="Services\Helpers\Signer.cs" />
+    <Compile Include="Services\Helpers\StringEnum.cs" />
+    <Compile Include="Services\Helpers\XmlSerializerService.cs" />
+    <Compile Include="Services\Interfaces\IManagerServices.cs" />
+    <Compile Include="Services\Interfaces\IAutenticaService.cs" />
+    <Compile Include="Services\Interfaces\IBase.cs" />
+    <Compile Include="Services\Interfaces\ICodeError.cs" />
+    <Compile Include="Services\Interfaces\ICodeRequest.cs" />
+    <Compile Include="Services\Interfaces\IConfiguration.cs" />
+    <Compile Include="Services\Interfaces\IConsultaService.cs" />
+    <Compile Include="Services\Interfaces\IDescargaService.cs" />
+    <Compile Include="Services\Interfaces\IDownloadResponse.cs" />
+    <Compile Include="Services\Interfaces\IQueryResponse.cs" />
+    <Compile Include="Services\Interfaces\IServiceBase.cs" />
+    <Compile Include="Services\Interfaces\ISolicitante.cs" />
+    <Compile Include="Services\Interfaces\ISolicitud.cs" />
+    <Compile Include="Services\Interfaces\IStatusCode.cs" />
+    <Compile Include="Services\Interfaces\IStatusRequest.cs" />
+    <Compile Include="Services\Interfaces\IVerificaService.cs" />
+    <Compile Include="Services\Interfaces\IVerifyResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CFDI\ManagerServices.cs" />
+    <Compile Include="Services\Abstracts\AutenticaService.cs" />
+    <Compile Include="Services\Abstracts\ConsultaService.cs" />
+    <Compile Include="Services\Abstracts\DescargaService.cs" />
+    <Compile Include="Services\Abstracts\VerificaService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="changes.txt" />
+    <Content Include="readme.txt" />
+    <Content Include="sat30px.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

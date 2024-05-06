@@ -80,9 +80,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\Jaeger.SAT.CFDI.API.csproj">
+    <ProjectReference Include="..\src\Jaeger.SAT.API.csproj">
       <Project>{dbe32b79-1565-4977-bbfb-20333f51d0dc}</Project>
-      <Name>Jaeger.SAT.CFDI.API</Name>
+      <Name>Jaeger.SAT.API</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
