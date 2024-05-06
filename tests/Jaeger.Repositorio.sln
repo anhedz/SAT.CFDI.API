@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jaeger.Repositorio", "Jaeger.Repositorio.csproj", "{CB2F035F-D6C8-4168-9D52-5B0BE51CD7F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jaeger.SAT.CFDI.API", "..\src\Jaeger.SAT.CFDI.API.csproj", "{DBE32B79-1565-4977-BBFB-20333F51D0DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jaeger.SAT.API", "..\src\Jaeger.SAT.API.csproj", "{DBE32B79-1565-4977-BBFB-20333F51D0DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
