@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DBE32B79-1565-4977-BBFB-20333F51D0DC}</ProjectGuid>
+    <ProjectGuid>{82E962DE-DB7F-4D31-A19E-A19475F52774}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Jaeger.SAT.API</RootNamespace>
