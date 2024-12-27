@@ -1,0 +1,7 @@
+*******************************************************************************
+** Descarga masiva de CFDI y CFDI de retenciones e información de pagos
+*******************************************************************************
+
+https://www.sat.gob.mx/consultas/42968/consulta-y-recuperacion-de-comprobantes
+
+https://www.sat.gob.mx/cs/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1705376527662&ssbinary=true

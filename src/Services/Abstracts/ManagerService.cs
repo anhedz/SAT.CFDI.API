@@ -114,10 +114,7 @@ namespace Jaeger.SAT.API.Services.Abstracts {
                 return null;
             }
 
-            this._DescargaService.AddToken(this.Token);
-
-            this._DescargaService.AddIdPaquete(package);
-            
+            this._DescargaService.AddToken(this.Token).AddIdPaquete(package);
             var responseDescarga = this._DescargaService.Execute();
 
             return responseDescarga;

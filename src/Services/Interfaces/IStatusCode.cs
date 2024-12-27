@@ -1,4 +1,7 @@
 ﻿namespace Jaeger.SAT.API.Services.Interfaces {
+    /// <summary>
+    /// Codigo de estado de la peticion
+    /// </summary>
     public interface IStatusCode {
         /// <summary>
         /// obtener codigo de estado de la llamada. (CodStatus)

@@ -56,7 +56,7 @@ namespace Jaeger.SAT.API.Services.Abstracts {
         /// Ejecutar 
         /// </summary>
         public IVerifyResponse Execute() {
-            _SolicitudDescMasTercero = VerificaSolicitud();
+            this._SolicitudDescMasTercero = this.VerificaSolicitud();
             var VerifyResponse = new VerifyResponse()
                 .AddStatusCode(new StatusCode(_SolicitudDescMasTercero.CodEstatus, _SolicitudDescMasTercero.Mensaje))
                 .AddStatusRequest(new StatusRequest(_SolicitudDescMasTercero.EstadoSolicitud))
