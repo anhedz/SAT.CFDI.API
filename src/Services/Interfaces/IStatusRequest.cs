@@ -18,31 +18,33 @@
         /// <summary>
         /// Solicitud Acepatada (1 = Aceptada)
         /// </summary>
-        bool IsAccepted();
+        //bool IsAccepted();
 
         /// <summary>
         /// Solicitud En Proceso (2 = En Proceso)
         /// </summary>
-        bool IsInProgress();
+        //bool IsInProgress();
 
         /// <summary>
         /// Solicitud Terminada (3 = Terminada)
-        bool IsFinished();
+        //bool IsFinished();
 
         /// <summary>
         /// Solicitud Notifica error (4 = Error)
         /// </summary>
-        bool IsFailure();
+        //bool IsFailure();
 
         /// <summary>
         /// Solicitud Rechazada (5 = Rechazada)
         /// </summary>
-        bool IsRejected();
+        //bool IsRejected();
 
         /// <summary>
         /// para conocer si se encuentra en el estado 6: Vencida
         /// </summary>
         /// <returns>bool</returns>
-        bool IsExpired();
+        //bool IsExpired();
+
+        Enums.EstadoSolicitudEnum GetEstado();
     }
 }

@@ -17,6 +17,9 @@ using Jaeger.SAT.API.Services.Entities;
 
 namespace Jaeger.SAT.API.Services.Enums {
     public enum EstadoSolicitudEnum {
+        [Description("Desconocido")]
+        [StringValueAttribute("0")]
+        Unknown = 0,
         [Description("Aceptada")]
         [StringValueAttribute("1")]
         Accepted = 1,

@@ -3,7 +3,7 @@ using Jaeger.SAT.API.Services.Interfaces;
 
 namespace Jaeger.SAT.API.Services.Entities {
     /// <summary>
-    /// Estado de Solicitud
+    /// Estado de la Solicitud
     /// </summary>
     public class StatusRequest : IStatusRequest {
         private readonly int _code;
@@ -89,5 +89,24 @@ namespace Jaeger.SAT.API.Services.Entities {
             return _code == 6;
         }
         #endregion
+
+        public Enums.EstadoSolicitudEnum GetEstado() {
+            switch (_code) {
+                case 1:
+                    return Enums.EstadoSolicitudEnum.Accepted;
+                case 2:
+                    return Enums.EstadoSolicitudEnum.InProgress;
+                case 3:
+                    return Enums.EstadoSolicitudEnum.Finished;
+                case 4:
+                    return Enums.EstadoSolicitudEnum.Error;
+                case 5:
+                    return Enums.EstadoSolicitudEnum.Rejected;
+                case 6:
+                    return Enums.EstadoSolicitudEnum.Expired;
+                default:
+                    return Enums.EstadoSolicitudEnum.Unknown;
+            }
+        }
     }
 }
