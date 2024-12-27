@@ -97,6 +97,11 @@ namespace Jaeger.SAT.API.Services.Abstracts {
             return _VerifyResponse;
         }
 
+        public IVerifyResponse Verifica(ISolicitud solicitud) {
+            this._Solicitud = solicitud;
+            return this.Verifica();
+        }
+
         public IDownloadResponse Descargar(string package) {
             if (this._DescargaService == null) {
                 this.FactoryDescarga();

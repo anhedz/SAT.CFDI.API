@@ -28,6 +28,8 @@
 
         IVerifyResponse Verifica();
 
+        IVerifyResponse Verifica(ISolicitud solicitud);
+
         IDownloadResponse Descargar(string package);
     }
 }

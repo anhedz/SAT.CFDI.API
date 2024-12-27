@@ -86,3 +86,6 @@ tests/.vs/Jaeger.Repositorio/FileContentIndex/1c87d78e-0aaf-48c4-af76-6f1368d052
 tests/.vs/Jaeger.Repositorio/FileContentIndex/720706c1-a3ea-483a-90e9-4a040129e587.vsidx
 tests/.vs/Jaeger.Repositorio/FileContentIndex/8a3bbee3-55e5-4591-8021-e23cbef33726.vsidx
 tests/.vs/Jaeger.Repositorio/FileContentIndex/bca2efd9-94ee-43d9-869e-a180eff552a6.vsidx
+/tests/obj
+/tests/.vs
+/src/.vs
