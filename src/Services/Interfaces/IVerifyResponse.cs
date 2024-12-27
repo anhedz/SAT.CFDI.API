@@ -21,10 +21,19 @@ namespace Jaeger.SAT.API.Services.Interfaces {
         /// </summary>
         ICodeRequest CodeRequest { get; }
 
+        /// <summary>
+        /// obtener o establecer numero de CFDIs que conforman la solicitud de descarga consultada.
+        /// </summary>
         int NumberCfdis { get; }
 
+        /// <summary>
+        /// obtener o establecer (IdsPaquetes) identificadores de los paquetes que componen la solicitud de descarga masiva. Solo se devuelve cuando la solicitud posee un estatus de finalizado.
+        /// </summary>
         List<string> PackagesIds { get; }
 
+        /// <summary>
+        /// obtener o establecer contenido de la respuesta en formato XML
+        /// </summary>
         string XML { get; }
         #endregion
 
