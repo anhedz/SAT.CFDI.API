@@ -20,15 +20,26 @@ namespace Jaeger.SAT.API.Services.Abstracts {
             this._LastUpdateTime = DateTime.Now;
         }
 
+        /// <summary>
+        /// obtener solicitud de descarga de CFDIs o Metadata
+        /// </summary>
         public ISolicitud Solicitud {
             get { return this._Solicitud; }
         }
 
+        /// <summary>
+        /// agregar solicitud
+        /// </summary>
+        /// <param name="solicitud">ISolicitud</param>
         public IManagerServices AddSolicitud(ISolicitud solicitud) {
             this._Solicitud = solicitud;
             return this;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool Autenticacion() {
             if (!string.IsNullOrEmpty(this.Token)) {
                 if (!(this._LastUpdateTime > DateTime.Now)) {
@@ -54,11 +65,34 @@ namespace Jaeger.SAT.API.Services.Abstracts {
             return this._IsAutenticate;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         protected abstract void FactoryAutentica();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         protected abstract void FactoryConsulta();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         protected abstract void FactoryVerifica();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         protected abstract void FactoryDescarga();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IQueryResponse Consulta() {
             if (this._ConsultaService == null) {
                 this.FactoryConsulta();
@@ -77,6 +111,10 @@ namespace Jaeger.SAT.API.Services.Abstracts {
             return _SolicitudResponse;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IVerifyResponse Verifica() {
             if (this._VerificaService == null) {
                 this.FactoryVerifica();
@@ -97,11 +135,19 @@ namespace Jaeger.SAT.API.Services.Abstracts {
             return _VerifyResponse;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IVerifyResponse Verifica(ISolicitud solicitud) {
             this._Solicitud = solicitud;
             return this.Verifica();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IDownloadResponse Descargar(string package) {
             if (this._DescargaService == null) {
                 this.FactoryDescarga();

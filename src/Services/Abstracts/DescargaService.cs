@@ -14,21 +14,38 @@ namespace Jaeger.SAT.API.Services.Abstracts {
     /// realizada por el emisor o receptor de los CFDIs de los cuales se quiere descargar.
     /// </summary>
     internal abstract class DescargaService : ServiceBase, IServiceBase, IBase, IDescargaService {
+        #region
         protected internal string _IdPackage;
+        #endregion
 
-        public DescargaService() : base() {
-         
-        }
+        /// <summary>
+        /// constructor
+        /// </summary>
+        public DescargaService() : base() { }
 
+        /// <summary>
+        /// Agregar identificador de paquete
+        /// </summary>
+        /// <param name="idPaquete">idpaquete</param>
         public void AddIdPaquete(string idPaquete) {
             _IdPackage = idPaquete;
         }
 
+        /// <summary>
+        /// Agregar token
+        /// </summary>
+        /// <param name="token">token</param>
+        /// <returns>IDescargaService</returns>
         public IDescargaService AddToken(string token) {
             Token = token;
             return this;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sPaquete"></param>
+        /// <returns></returns>
         public RespuestaDescargaMasivaTerceros Execute(ref Stream sPaquete) {
             var descargaMasivaTerceros = new RespuestaDescargaMasivaTerceros();
             try {
@@ -47,6 +64,10 @@ namespace Jaeger.SAT.API.Services.Abstracts {
             return descargaMasivaTerceros;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IDownloadResponse Execute() {
             Stream stream = null;
             var responseDescarga = this.Execute(ref stream);
@@ -65,6 +86,10 @@ namespace Jaeger.SAT.API.Services.Abstracts {
             return downloadResponse;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         internal PeticionDescargaMasivaTerceros Request() {
             var request = new PeticionDescargaMasivaTerceros() {
                 IdPaquete = _IdPackage,
@@ -75,11 +100,18 @@ namespace Jaeger.SAT.API.Services.Abstracts {
             return request;
         }
 
+        /// <summary>
+        /// procesar archivo de descarga
+        /// </summary>
+        /// <param name="package">Strean</param>
+        /// <param name="fileName">Ruta completa para almacerna el archivo</param>
+        /// <returns>ruta del archivo</returns>
         internal string ProcessFile(Stream package, string fileName) {
             // si el directorio no existe lo creamos
             if (!Directory.Exists(this.Configuration.PathDownload)) {
                 Directory.CreateDirectory(this.Configuration.PathDownload);
             }
+
             try {
                 // nombre a asignar al nuevo archivo
                 var filezip = Path.Combine(this.Configuration.PathDownload, fileName + ".zip");

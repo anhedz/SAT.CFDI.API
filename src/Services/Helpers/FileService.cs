@@ -15,8 +15,12 @@ namespace Jaeger.SAT.API.Services.Helpers {
         /// metodo estatico para comprobar si el archivo esta siendo utilizado por otro proceso
         /// </summary>
         /// <param name="file"></param>
-        /// <returns></returns>
+        /// <returns>verdadero si el archivo esta siendo utilizado por otro proceso</returns>
         public static bool IsFileinUse(FileInfo file) {
+            if (!file.Exists) {
+                return false; 
+            }
+
             FileStream fileStream = null;
             try {
                 try {
