@@ -13,12 +13,15 @@ namespace Jaeger.SAT.API.Services.Abstracts {
     /// Servicio de Verificacion de Solicitud de Descarga
     /// </summary>
     internal abstract class VerificaService : ServiceBase, IServiceBase, IBase, IVerificaService {
+        #region declaraciones
         protected internal string _IdSolicitud;
         protected internal RespuestaVerificaSolicitudDescMasTercero _SolicitudDescMasTercero;
+        #endregion
 
-        public VerificaService() {
-            
-        }
+        /// <summary>
+        /// constructor
+        /// </summary>
+        public VerificaService() : base() { }
 
         /// <summary>
         /// Agregar token de autenticacion

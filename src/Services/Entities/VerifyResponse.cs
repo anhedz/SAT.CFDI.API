@@ -15,6 +15,9 @@ namespace Jaeger.SAT.API.Services.Entities {
         protected internal string _XML;
         #endregion
 
+        /// <summary>
+        /// constructor
+        /// </summary>
         public VerifyResponse() { }
 
         #region propiedades
@@ -45,6 +48,9 @@ namespace Jaeger.SAT.API.Services.Entities {
             get { return _PackagesIds; }
         }
 
+        /// <summary>
+        /// xml del conteido de la respuesta
+        /// </summary>
         public string XML {
             get { return _XML; }
         }
@@ -57,43 +63,53 @@ namespace Jaeger.SAT.API.Services.Entities {
         #endregion
 
         #region class builder
+        /// <summary>
+        /// Codigo de estado de la llamada. (CodStatus)
+        /// </summary>
         public IVerifyResponse AddStatusCode(IStatusCode statusCode) {
             _StatusCode = statusCode;
             return this;
         }
 
+        /// <summary>
+        /// numero correspondiente al estado de la solicitud de descarga, Estados de la solicitud: Aceptada=1, EnProceso=2, Terminada=3, Error=4, Rechazada=5, Vencida=6 (EstadoSolicitud)
+        /// </summary>
         public IVerifyResponse AddStatusRequest(IStatusRequest status) {
             _StatusRequest = status;
             return this;
         }
 
+        /// <summary>
+        /// Codigos de status de solicitud
+        /// </summary>
         public IVerifyResponse AddCodeRequest(ICodeRequest codeRequest) {
             _CodeRequest = codeRequest;
             return this;
         }
 
+        /// <summary>
+        /// numero de CFDIs que conforman la solicitud de descarga consultada.
+        /// </summary>
         public IVerifyResponse AddNumnberCFDIs(int numberCFDIs) {
             _NumberCfdis = numberCFDIs;
             return this;
         }
 
+        /// <summary>
+        /// identificadores de los paquetes que componen la solicitud de descarga masiva. Solo se devuelve cuando la solicitud posee un estatus de finalizado.
+        /// </summary>
         public IVerifyResponse AddPackagesIds(List<string> packages) {
             _PackagesIds = packages;
             return this;
         }
 
+        /// <summary>
+        /// establecer contenido de la respuesta en formato XML
+        /// </summary>
         public IVerifyResponse AddXML(string xml) {
             _XML = xml;
             return this;
         }
-
-        //public IVerifyResponse AddPackage(IDownloadResponse response) {
-        //    if (DownloadsPackages == null) {
-        //        DownloadsPackages = new List<IDownloadResponse>();
-        //    }
-        //    DownloadsPackages.Add(response);
-        //    return this;
-        //}
         #endregion
     }
 }

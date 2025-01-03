@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Jaeger.SAT.API.Services.Enums;
-using Jaeger.SAT.API.Services.Interfaces;
+﻿using Jaeger.SAT.API.Services.Interfaces;
 
 namespace Jaeger.SAT.API.Services.Entities {
     /// <summary>
