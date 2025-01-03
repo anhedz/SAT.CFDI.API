@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{82E962DE-DB7F-4D31-A19E-A19475F52774}</ProjectGuid>
+    <ProjectGuid>{DBE32B79-1565-4977-BBFB-20333F51D0DC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Jaeger.SAT.API</RootNamespace>
@@ -61,6 +61,7 @@
     <Compile Include="CRET\DescargaService.cs" />
     <Compile Include="CRET\ManagerService.cs" />
     <Compile Include="CRET\VerificaService.cs" />
+    <Compile Include="Services\Entities\AccessToken.cs" />
     <Compile Include="Services\Abstracts\ManagerServiceBase.cs" />
     <Compile Include="Services\Abstracts\Base.cs" />
     <Compile Include="Services\Abstracts\ServiceBase.cs" />

@@ -15,9 +15,17 @@ namespace Jaeger.SAT.API.Services.Entities {
         /// </summary>
         public IStatusCode StatusCode { get; internal set; }
 
+        /// <summary>
+        /// ruta de descarga
+        /// </summary>
         public string Path { get; internal set; }
 
         #region builder
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idPackage">identificador de paquete</param>
+        /// <returns>IDownloadResponse</returns>
         public IDownloadResponse AddIdPackage(string idPackage) {
             IdPackage = idPackage;
             return this;

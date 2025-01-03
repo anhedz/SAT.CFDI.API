@@ -17,24 +17,45 @@ using Jaeger.SAT.API.Services.Entities;
 
 namespace Jaeger.SAT.API.Services.Enums {
     public enum EstadoSolicitudEnum {
+        /// <summary>
+        /// 0 - desconocido
+        /// </summary>
         [Description("Desconocido")]
         [StringValueAttribute("0")]
         Unknown = 0,
+        /// <summary>
+        /// 1 - Aceptada
+        /// </summary>
         [Description("Aceptada")]
         [StringValueAttribute("1")]
         Accepted = 1,
+        /// <summary>
+        /// En Proceso
+        /// </summary>
         [Description("En proceso")]
         [StringValueAttribute("2")]
         InProgress = 2,
+        /// <summary>
+        /// 3 - Terminada
+        /// </summary>
         [Description("Terminada")]
         [StringValueAttribute("3")]
         Finished = 3,
+        /// <summary>
+        /// 4 - Error
+        /// </summary>
         [Description("Error")]
         [StringValueAttribute("4")]
         Error = 4,
+        /// <summary>
+        /// 5 - Rechazada
+        /// </summary>
         [Description("Rechazada")]
         [StringValueAttribute("5")]
         Rejected = 5,
+        /// <summary>
+        /// 6 - Vencida
+        /// </summary>
         [Description("Vencida")]
         [StringValueAttribute("6")]
         Expired = 6,

@@ -12,12 +12,15 @@ namespace Jaeger.SAT.API.Services.Abstracts {
     /// Servicio Solicutd de Descarga Masiva
     /// </summary>
     internal abstract class ConsultaService : ServiceBase, IServiceBase, IBase, IConsultaService {
+        #region
         protected internal ISolicitud _Solicitud;
         protected internal RespuestaSolicitudDescMasTercero _SolicitudDescMasTercero;
+        #endregion
 
-        public ConsultaService() {
-            
-        }
+        /// <summary>
+        /// constructor
+        /// </summary>
+        public ConsultaService() { }
 
         /// <summary>
         /// Parametro obligatorio, token de autenticacion
@@ -46,6 +49,10 @@ namespace Jaeger.SAT.API.Services.Abstracts {
             return response;
         }
 
+        /// <summary>
+        /// ejecutar consulta
+        /// </summary>
+        /// <returns>IQueryResponse</returns>
         public RespuestaSolicitudDescMasTercero Execute(ISolicitud solicitud) {
             Execute(CrearSolicitud(solicitud));
             return _SolicitudDescMasTercero;
@@ -75,7 +82,7 @@ namespace Jaeger.SAT.API.Services.Abstracts {
         /// <summary>
         /// crear solicitud de peticion del servicio 
         /// </summary>
-        /// <param name="solicitud"></param>
+        /// <param name="solicitud">objeto Solicitud</param>
         /// <returns>SolicitudDescargaMasivaTercero</returns>
         internal SolicitudDescargaMasivaTercero CrearSolicitud(ISolicitud solicitud) {
             var response = new SolicitudDescargaMasivaTercero {

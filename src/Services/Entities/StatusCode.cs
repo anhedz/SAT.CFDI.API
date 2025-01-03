@@ -1,18 +1,23 @@
-﻿using Jaeger.SAT.API.Services.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Jaeger.SAT.API.Services.Enums;
+using Jaeger.SAT.API.Services.Interfaces;
 
 namespace Jaeger.SAT.API.Services.Entities {
     /// <summary>
+    /// Estado de la Solicitud
     /// Defines "CodEstatus" and "Mensaje"
     /// </summary>
     public class StatusCode : IStatusCode {
+        #region declaraciones
         private readonly int _Code;
         private readonly string _Message;
-        private readonly Dictionary<int, string> _values =
-            new Dictionary<int, string>() {
+        #endregion
 
-            };
-
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="code">codigo numerico</param>
+        /// <param name="message">mensaje o descripcion</param>
         public StatusCode(string code, string message) {
             if (!string.IsNullOrEmpty(code)) {
                 _Code = int.Parse(code);

@@ -5,10 +5,12 @@ namespace Jaeger.SAT.API.Services.Abstracts {
     /// clase abstracta del administrador del servicio de consulta
     /// </summary>
     public abstract class ManagerServiceBase : Base, IBase {
+        #region declaraciones
         protected internal IAutenticaService _AutenticaService;
         protected internal IConsultaService _ConsultaService;
         protected internal IVerificaService _VerificaService;
         protected internal IDescargaService _DescargaService;
+        #endregion
 
         /// <summary>
         /// constructor

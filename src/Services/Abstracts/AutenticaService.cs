@@ -12,10 +12,14 @@ namespace Jaeger.SAT.API.Services.Abstracts {
     /// </summary>
     internal abstract class AutenticaService : ServiceBase, IServiceBase, IBase, IAutenticaService {
 
-        public AutenticaService() : base() {
-            
-        }
+        /// <summary>
+        /// constructor
+        /// </summary>
+        public AutenticaService() : base() { }
 
+        /// <summary>
+        /// obtener bandera que indica si se obtiene autenticacion
+        /// </summary>
         public bool IsAuthenticated {
             get { return !string.IsNullOrEmpty(Token); }
         }
