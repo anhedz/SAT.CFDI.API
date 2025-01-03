@@ -32,7 +32,7 @@ namespace Jaeger.SAT.API.WebService.Verificacion {
         }
 
         /// <summary>
-        /// obtener o establecer codigo de estatis de la peticion de verificacion
+        /// obtener o establecer codigo de estatus de la peticion de verificacion
         /// </summary>
         [XmlAttribute]
         public string CodEstatus {

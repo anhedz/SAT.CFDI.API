@@ -7,6 +7,9 @@ using Jaeger.SAT.API.WebService.Abstracts;
 using Jaeger.SAT.API.WebService.Base;
 
 namespace Jaeger.SAT.API.WebService.Consultas {
+    /// <summary>
+    ///     Peticion de solicitud.
+    /// </summary>
     [GeneratedCode("System.Xml", "4.7.2612.0")]
     [DebuggerStepThrough]
     [DesignerCategory("code")]

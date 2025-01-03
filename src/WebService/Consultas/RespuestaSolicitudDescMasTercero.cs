@@ -6,6 +6,9 @@ using System.Xml.Serialization;
 using Jaeger.SAT.API.WebService.Abstracts;
 
 namespace Jaeger.SAT.API.WebService.Consultas {
+    /// <summary>
+    ///     Resultado de la peticion de solicitud.
+    /// </summary>
     [GeneratedCode("System.Xml", "4.7.2612.0")]
     [DebuggerStepThrough]
     [DesignerCategory("code")]
@@ -16,6 +19,10 @@ namespace Jaeger.SAT.API.WebService.Consultas {
         private string codEstatusField;
         private string mensajeField;
 
+        /// <summary>
+        ///     IdSolicitud - Contiene el resultado de la petición con el código de respuesta y los UUID de los CFDIs de los cuales
+        ///     se solicitó la descarga, pero se encuentran en espera de una confirmación por parte del receptor.
+        /// </summary>
         [XmlAttribute]
         public string IdSolicitud {
             get { return idSolicitudField; }
@@ -25,6 +32,9 @@ namespace Jaeger.SAT.API.WebService.Consultas {
             }
         }
 
+        /// <summary>
+        ///     CodEstatus - Código de estatus de la solicitud.
+        /// </summary>
         [XmlAttribute]
         public string CodEstatus {
             get { return codEstatusField; }
@@ -34,6 +44,9 @@ namespace Jaeger.SAT.API.WebService.Consultas {
             }
         }
 
+        /// <summary>
+        ///     Mensaje - Pequeña descripción del código estatus.
+        /// </summary>
         [XmlAttribute]
         public string Mensaje {
             get { return mensajeField; }

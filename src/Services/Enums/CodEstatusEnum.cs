@@ -4,6 +4,8 @@ using Jaeger.SAT.API.Services.Entities;
 namespace Jaeger.SAT.API.Services.Enums {
     /// <summary>
     /// Codigos de status de solicitud
+    /// Código de estatus de la solicitud. Mensajes recibidos desde la operación SolicitaDescarga,
+    /// VerificaSolicitudDescarga y Descargar.
     /// </summary>
     public enum CodEstatusEnum {
         /// <summary>

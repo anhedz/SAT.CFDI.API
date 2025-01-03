@@ -61,6 +61,7 @@
     <Compile Include="CRET\DescargaService.cs" />
     <Compile Include="CRET\ManagerService.cs" />
     <Compile Include="CRET\VerificaService.cs" />
+    <Compile Include="Services\Entities\AccessToken.cs" />
     <Compile Include="Services\Abstracts\ManagerServiceBase.cs" />
     <Compile Include="Services\Abstracts\Base.cs" />
     <Compile Include="Services\Abstracts\ServiceBase.cs" />

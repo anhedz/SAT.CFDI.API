@@ -7,6 +7,9 @@ using Jaeger.SAT.API.WebService.Abstracts;
 using Jaeger.SAT.API.WebService.Base;
 
 namespace Jaeger.SAT.API.WebService.Descargas {
+    /// <summary>
+    ///     Peticion de descarga.
+    /// </summary>
     [GeneratedCode("System.Xml", "4.7.2612.0")]
     [DebuggerStepThrough]
     [DesignerCategory("code")]
@@ -26,6 +29,9 @@ namespace Jaeger.SAT.API.WebService.Descargas {
             }
         }
 
+        /// <summary>
+        ///     IdPaquete - Contiene el identificador del paquete que se desea descargar.
+        /// </summary>
         [XmlAttribute]
         public string IdPaquete {
             get { return idPaqueteField; }
@@ -35,6 +41,9 @@ namespace Jaeger.SAT.API.WebService.Descargas {
             }
         }
 
+        /// <summary>
+        ///     RfcSolicitante - Contiene el RFC del solicitante que genero la petición de solicitud de descarga masiva.
+        /// </summary>
         [XmlAttribute]
         public string RfcSolicitante {
             get { return rfcSolicitanteField; }

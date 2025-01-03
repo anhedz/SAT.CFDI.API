@@ -8,12 +8,15 @@ namespace Jaeger.SAT.API.WebService.Consultas {
     [Serializable()]
     [XmlType(Namespace = "http://DescargaMasivaTerceros.sat.gob.mx")]
     public enum EstadoComprobante {
-
-        /// <remarks/>
+        /// <summary>
+        ///     Cancelado = 0
+        /// </summary>
         [XmlEnum("0")]
         Cancelado,
 
-        /// <remarks/>
+        /// <summary>
+        ///     Vigente = 1
+        /// </summary>
         [XmlEnum("1")]
         Vigente,
     }

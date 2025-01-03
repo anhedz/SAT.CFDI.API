@@ -6,6 +6,9 @@ using System.Xml.Serialization;
 using Jaeger.SAT.API.WebService.Abstracts;
 
 namespace Jaeger.SAT.API.WebService.Descargas {
+    /// <summary>
+    ///     Resultado de la peticion de descarga.
+    /// </summary>
     [GeneratedCode("System.Xml", "4.7.2612.0")]
     [DebuggerStepThrough]
     [DesignerCategory("code")]
