@@ -1,18 +1,18 @@
-﻿using System.CodeDom.Compiler;
-using System.ServiceModel;
-using System.Threading.Tasks;
-
-namespace Jaeger.SAT.API.WebService.Verificacion {
-    [GeneratedCode("System.ServiceModel", "4.0.0.0")]
-    [ServiceContract(ConfigurationName = "Verificacion.IVerificaSolicitudDescargaService", Namespace = "http://DescargaMasivaTerceros.sat.gob.mx")]
+﻿namespace Jaeger.SAT.API.WebService.Verificacion
+{
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace = "http://DescargaMasivaTerceros.sat.gob.mx", ConfigurationName = "Verificacion.IVerificaSolicitudDescargaService")]
     public interface IVerificaSolicitudDescargaService {
-        [OperationContract(Action = "http://DescargaMasivaTerceros.sat.gob.mx/IVerificaSolicitudDescargaService/VerificaSolicitudDescarga", ReplyAction = "http://DescargaMasivaTerceros.sat.gob.mx/IVerificaSolicitudDescargaService/VerificaSolicitudDescargaResponse")]
-        [XmlSerializerFormat(SupportFaults = true)]
-        RespuestaVerificaSolicitudDescMasTercero VerificaSolicitudDescarga(
-          VerificaSolicitudDescargaMasivaTercero solicitud);
 
-        [OperationContract(Action = "http://DescargaMasivaTerceros.sat.gob.mx/IVerificaSolicitudDescargaService/VerificaSolicitudDescarga", ReplyAction = "http://DescargaMasivaTerceros.sat.gob.mx/IVerificaSolicitudDescargaService/VerificaSolicitudDescargaResponse")]
-        Task<RespuestaVerificaSolicitudDescMasTercero> VerificaSolicitudDescargaAsync(
-          VerificaSolicitudDescargaMasivaTercero solicitud);
+        [System.ServiceModel.OperationContractAttribute(Action = "http://DescargaMasivaTerceros.sat.gob.mx/IVerificaSolicitudDescargaService/Verifi" +
+            "caSolicitudDescarga", ReplyAction = "http://DescargaMasivaTerceros.sat.gob.mx/IVerificaSolicitudDescargaService/Verifi" +
+            "caSolicitudDescargaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults = true)]
+        RespuestaVerificaSolicitudDescMasTercero VerificaSolicitudDescarga(VerificaSolicitudDescargaMasivaTercero solicitud);
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://DescargaMasivaTerceros.sat.gob.mx/IVerificaSolicitudDescargaService/Verifi" +
+            "caSolicitudDescarga", ReplyAction = "http://DescargaMasivaTerceros.sat.gob.mx/IVerificaSolicitudDescargaService/Verifi" +
+            "caSolicitudDescargaResponse")]
+        System.Threading.Tasks.Task<RespuestaVerificaSolicitudDescMasTercero> VerificaSolicitudDescargaAsync(VerificaSolicitudDescargaMasivaTercero solicitud);
     }
 }

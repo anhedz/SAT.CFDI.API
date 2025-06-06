@@ -1,93 +1,123 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Xml.Serialization;
-using Jaeger.SAT.API.WebService.Abstracts;
+﻿namespace Jaeger.SAT.API.WebService.Verificacion {
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://DescargaMasivaTerceros.sat.gob.mx")]
+    public partial class RespuestaVerificaSolicitudDescMasTercero : object, System.ComponentModel.INotifyPropertyChanged {
 
-namespace Jaeger.SAT.API.WebService.Verificacion {
-    [GeneratedCode("System.Xml", "4.7.2612.0")]
-    [DebuggerStepThrough]
-    [DesignerCategory("code")]
-    [XmlType(Namespace = "http://DescargaMasivaTerceros.sat.gob.mx")]
-    [Serializable]
-    public class RespuestaVerificaSolicitudDescMasTercero : PropertyChangeImplementation, INotifyPropertyChanged {
         private string[] idsPaquetesField;
+
         private string codEstatusField;
+
         private int estadoSolicitudField;
+
         private string codigoEstadoSolicitudField;
+
         private int numeroCFDIsField;
+
         private string mensajeField;
 
         /// <summary>
-        /// obtener o establecer los identificadores de los paquetes que componen la solicitud de descarga. Solo se devuelve cuando la solicitud posee un status finalizado
+        /// Contiene los identificadores de los paquetes que componen la solicitud de descarga masiva.Solo se devuelve cuando la solicitud posee un estatus de finalizado.  
         /// </summary>
-        [XmlElement("IdsPaquetes", Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute("IdsPaquetes", Order = 0)]
         public string[] IdsPaquetes {
-            get { return idsPaquetesField; }
+            get {
+                return this.idsPaquetesField;
+            }
             set {
-                idsPaquetesField = value;
-                OnPropertyChanged(nameof(IdsPaquetes));
+                this.idsPaquetesField = value;
+                this.RaisePropertyChanged("IdsPaquetes");
             }
         }
 
         /// <summary>
-        /// obtener o establecer codigo de estatus de la peticion de verificacion
+        /// Código de estatus de la petición de verificación. 
         /// </summary>
-        [XmlAttribute]
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public string CodEstatus {
-            get { return codEstatusField; }
+            get {
+                return this.codEstatusField;
+            }
             set {
-                codEstatusField = value;
-                OnPropertyChanged(nameof(CodEstatus));
+                this.codEstatusField = value;
+                this.RaisePropertyChanged("CodEstatus");
             }
         }
 
         /// <summary>
-        /// obtener o establecer el numero correspondiente al estado de la solicitud de descarga (Aceptada = 1, EnProceso = 2, Terminada = 3, Error = 4, Rechazada = 5, Vencida = 6)
+        /// Contiene el número correspondiente al estado de la solicitud de descarga.
+        /// Estados de la solicitud:
+        ///  Aceptada = 1 
+        ///  En Proceso = 2
+        ///  Terminada = 3 
+        ///  Error = 4 
+        ///  Rechazada = 5 
+        ///  Vencida = 6 
+        /// *Esta sucede 72 horas después de que se generó el paquete de descarga.
         /// </summary>
-        [XmlAttribute]
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public int EstadoSolicitud {
-            get { return estadoSolicitudField; }
+            get {
+                return this.estadoSolicitudField;
+            }
             set {
-                estadoSolicitudField = value;
-                OnPropertyChanged(nameof(EstadoSolicitud));
+                this.estadoSolicitudField = value;
+                this.RaisePropertyChanged("EstadoSolicitud");
             }
         }
 
         /// <summary>
-        /// obtener o establecer codigo de estado de la solicitud de descarga, los cuales pueden ser 5000, 5002, 5003, 5004 o 5005
+        /// Contiene el código de estado de la solicitud de descarga, el cual puede ser 5000, 5001, 5002 o 5005, para más información referente a estos códigos, favor de
+        /// consultar el documento Documentación WS Solicitud Descarga Masiva.docx.
         /// </summary>
-        [XmlAttribute]
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public string CodigoEstadoSolicitud {
-            get { return codigoEstadoSolicitudField; }
+            get {
+                return this.codigoEstadoSolicitudField;
+            }
             set {
-                codigoEstadoSolicitudField = value;
-                OnPropertyChanged(nameof(CodigoEstadoSolicitud));
+                this.codigoEstadoSolicitudField = value;
+                this.RaisePropertyChanged("CodigoEstadoSolicitud");
             }
         }
 
         /// <summary>
-        /// obtener o establecer numero de CFDIs que conforman la solicitud de descarga consultada
+        /// Número de CFDI que conforman la solicitud de descarga consultada.
         /// </summary>
-        [XmlAttribute]
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public int NumeroCFDIs {
-            get { return numeroCFDIsField; }
+            get {
+                return this.numeroCFDIsField;
+            }
             set {
-                numeroCFDIsField = value;
-                OnPropertyChanged(nameof(NumeroCFDIs));
+                this.numeroCFDIsField = value;
+                this.RaisePropertyChanged("NumeroCFDIs");
             }
         }
 
         /// <summary>
-        /// obtener o establecer descripcion del codigo estatus correspondiente a la peticion de verificacion
+        /// Pequeña descripción del código correspondiente a la petición de verificación.
         /// </summary>
-        [XmlAttribute]
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public string Mensaje {
-            get { return mensajeField; }
+            get {
+                return this.mensajeField;
+            }
             set {
-                mensajeField = value;
-                OnPropertyChanged(nameof(Mensaje));
+                this.mensajeField = value;
+                this.RaisePropertyChanged("Mensaje");
+            }
+        }
+
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }

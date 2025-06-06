@@ -48,7 +48,7 @@ namespace Jaeger.SAT.API.Services.Interfaces {
         DateTime FechaFinal { get; set; }
 
         /// <summary>
-        /// obtener o establecer RFC's de recetptores 
+        /// obtener o establecer RFC's de receptores 
         /// </summary>
         string ReceptorRFC { get; set; }
 

@@ -1,36 +1,22 @@
-﻿using Jaeger.SAT.API.WebService.Base;
-
-namespace Jaeger.SAT.API.WebService.Verificacion {
+﻿namespace Jaeger.SAT.API.WebService.Solicitud {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://DescargaMasivaTerceros.sat.gob.mx")]
-    public partial class VerificaSolicitudDescargaMasivaTercero : object, System.ComponentModel.INotifyPropertyChanged {
-
-        private SignatureType signatureField;
+    public partial class RespuestaSolicitudDescMasTercero : object, System.ComponentModel.INotifyPropertyChanged {
 
         private string idSolicitudField;
 
         private string rfcSolicitanteField;
 
-        /// <summary>
-        /// Firma de la petición realizada con el certificado de e.firma.
-        /// </summary>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.w3.org/2000/09/xmldsig#", Order = 0)]
-        public SignatureType Signature {
-            get {
-                return this.signatureField;
-            }
-            set {
-                this.signatureField = value;
-                this.RaisePropertyChanged("Signature");
-            }
-        }
+        private string codEstatusField;
+
+        private string mensajeField;
 
         /// <summary>
-        /// Contiene el Identificador de la solicitud que se pretende consultar.
+        /// Contiene el resultado de la petición con el código de respuesta y los UUID de los CFDIs de los cuales se solicitó la descarga, pero se encuentran en espera de una confirmación por parte del receptor.
         /// </summary>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string IdSolicitud {
@@ -44,7 +30,7 @@ namespace Jaeger.SAT.API.WebService.Verificacion {
         }
 
         /// <summary>
-        /// Contiene el RFC del solicitante que generó la petición de solicitud de descarga masiva.
+        /// Contiene el RFC que realizo la solicitud. 
         /// </summary>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string RfcSolicitante {
@@ -54,6 +40,34 @@ namespace Jaeger.SAT.API.WebService.Verificacion {
             set {
                 this.rfcSolicitanteField = value;
                 this.RaisePropertyChanged("RfcSolicitante");
+            }
+        }
+
+        /// <summary>
+        /// Código de estatus de la solicitud
+        /// </summary>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string CodEstatus {
+            get {
+                return this.codEstatusField;
+            }
+            set {
+                this.codEstatusField = value;
+                this.RaisePropertyChanged("CodEstatus");
+            }
+        }
+
+        /// <summary>
+        /// Pequeña descripción del código estatus 
+        /// </summary>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Mensaje {
+            get {
+                return this.mensajeField;
+            }
+            set {
+                this.mensajeField = value;
+                this.RaisePropertyChanged("Mensaje");
             }
         }
 

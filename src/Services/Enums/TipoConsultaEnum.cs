@@ -14,6 +14,11 @@ namespace Jaeger.SAT.API.Services.Enums {
         /// comprobantes recibidos
         /// </summary>
         [Description("Recibidos")]
-        Recibidos = 2
+        Recibidos = 2,
+        /// <summary>
+        /// 
+        /// </summary>
+        [Description("Folio")]
+        Folio = 3,
     }
 }
