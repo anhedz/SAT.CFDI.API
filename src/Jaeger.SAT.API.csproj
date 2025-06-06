@@ -68,6 +68,7 @@
     <Compile Include="Services\Abstracts\Base.cs" />
     <Compile Include="Services\Abstracts\ServiceBase.cs" />
     <Compile Include="Services\Abstracts\ManagerService.cs" />
+    <Compile Include="Services\Enums\ComplementoEnum.cs" />
     <Compile Include="WebService\Abstracts\PropertyChangeImplementation.cs" />
     <Compile Include="WebService\Autenticacion\AutenticacionClient.cs" />
     <Compile Include="WebService\Autenticacion\IAutenticacion.cs" />

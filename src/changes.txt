@@ -7,3 +7,5 @@
 - clase Singer para realizar firma de las peticiones
 02/01/2025
 - documentación
+06/06/2025
+- cambios del servicio de solicitud de descarga, ahora se tienen tres tipos de solicitudes Emitidos, Recibidos y Folio

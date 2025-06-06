@@ -14,16 +14,17 @@ namespace Jaeger.Repositorio.Forms {
         }
 
         private void MainForm_Load(object sender, EventArgs e) {
-            this._Service = new Jaeger.SAT.API.CFDI.Services.ManagerServices(null);
             
-            this.timer = new Timer();
-            this.timer.Interval = 1000;
+
+            this.timer = new Timer {
+                Interval = 1000
+            };
             this.timer.Tick += Timer_Tick;
             this.timer.Start();
         }
 
         private void Timer_Tick(object sender, EventArgs e) {
-            this.StatusLabel.Text = "checando ..";
+            this.StatusLabel.Text = "checando ...";
             if (this._Service == null) {
                 this.StatusLabel.Image = Properties.Resources.cancel_16px;
             } else {
@@ -56,6 +57,20 @@ namespace Jaeger.Repositorio.Forms {
         private void Verificar_Click(object sender, EventArgs e) {
             var s0 = new SAT.API.CFDI.Services.ManagerServices(null);
             s0.Verifica();
+        }
+
+        private void CrearSolicitud_Click(object sender, EventArgs e) {
+            this._Solicitante = new SAT.API.Services.Entities.Solicitante {
+                RFC = this.SolicitanteRFC.Text.Trim(),
+                PasswordKey = this.Password.Text.Trim(),
+                B64PFX = this.PathCer.Text.Trim()
+            };
+
+            this._Service = new Jaeger.SAT.API.CFDI.Services.ManagerServices(this._Solicitante);
+            this._Service.AddSolicitante(this._Solicitante);
+            this._Service.AddSolicitud(this.Solicitud.GetSolicitud());
+            this._Service.Autenticacion();
+            this._Service.Consulta();
         }
     }
 }

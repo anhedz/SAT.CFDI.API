@@ -45,24 +45,7 @@ namespace Jaeger.SAT.API.Services.Abstracts {
             return string.Empty;
         }
 
-        protected string Genera1Token() {
-            try {
-                var autenticacionClient = new AutenticacionClient(GetBinding(), GetEndpointAddress());
-                ServicePointManager.ServerCertificateValidationCallback = (s, certificate, chain, sslPolicyErrors) => true;
-                var x509Certificate2 = new X509Certificate2(Solicitante.GetBytes(), Solicitante.PasswordKey, X509KeyStorageFlags.DefaultKeySet);
-                autenticacionClient.ClientCredentials.ClientCertificate.Certificate = x509Certificate2;
-                Token = autenticacionClient.Autentica();
-                LogInfoService.Log("[Genera Token] Autentica", $"[Token]: {Token}");
-                return Token;
-            } catch (FaultException ex) {
-                LogErrorService.Log("[Genera Token] Error: " + ex.Message, ex.StackTrace);
-            } catch (Exception ex) {
-                LogErrorService.Log("[Genera Token] Error: " + ex.Message, ex.StackTrace);
-            }
-            return string.Empty;
-        }
-
-        private string GeneraTokenFake() {
+        public string GeneraToken1() {
             // Este metodo es para evitar el error de autenticacion cuando se llama al servicio sin un certificado valido
             // Se puede usar un token falso o una cadena vacia
             LogInfoService.Log("[Genera Token Fake] Autentica", $"[Token]: {Token}");

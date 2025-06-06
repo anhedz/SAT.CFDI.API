@@ -19,6 +19,13 @@ namespace Jaeger.SAT.API.WebService.Abstracts {
             OnPropertyChanged(((MemberExpression)propertyExpression.Body).Member.Name);
         }
 
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

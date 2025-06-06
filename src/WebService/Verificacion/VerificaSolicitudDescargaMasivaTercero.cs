@@ -1,4 +1,5 @@
-﻿using Jaeger.SAT.API.WebService.Base;
+﻿using Jaeger.SAT.API.WebService.Abstracts;
+using Jaeger.SAT.API.WebService.Base;
 
 namespace Jaeger.SAT.API.WebService.Verificacion {
     /// <remarks/>
@@ -7,7 +8,7 @@ namespace Jaeger.SAT.API.WebService.Verificacion {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://DescargaMasivaTerceros.sat.gob.mx")]
-    public partial class VerificaSolicitudDescargaMasivaTercero : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class VerificaSolicitudDescargaMasivaTercero : PropertyChangeImplementation, System.ComponentModel.INotifyPropertyChanged {
 
         private SignatureType signatureField;
 
@@ -54,15 +55,6 @@ namespace Jaeger.SAT.API.WebService.Verificacion {
             set {
                 this.rfcSolicitanteField = value;
                 this.RaisePropertyChanged("RfcSolicitante");
-            }
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }

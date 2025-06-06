@@ -23,31 +23,11 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.Header = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.HeaderLabel = new System.Windows.Forms.Label();
             this.StatusBar = new System.Windows.Forms.StatusStrip();
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.ProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.SolicitudGroupBox = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.lblTipoSolicitud = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.lblFechaFinal = new System.Windows.Forms.Label();
-            this.lblFechaInicial = new System.Windows.Forms.Label();
-            this.HoraFinal = new System.Windows.Forms.DateTimePicker();
-            this.HoraInicial = new System.Windows.Forms.DateTimePicker();
-            this.lblTipo = new System.Windows.Forms.Label();
-            this.Estado = new System.Windows.Forms.ComboBox();
-            this.lblRFCTerceros = new System.Windows.Forms.Label();
-            this.TipoComplemento = new System.Windows.Forms.ComboBox();
-            this.RFCTerceros = new System.Windows.Forms.TextBox();
-            this.lblEstado = new System.Windows.Forms.Label();
-            this.lblTipoComplemento = new System.Windows.Forms.Label();
-            this.lblFiltrarRFC = new System.Windows.Forms.Label();
-            this.SubTipoComprobante = new System.Windows.Forms.ComboBox();
-            this.FiltrarRFC = new System.Windows.Forms.TextBox();
-            this.FechaInicial = new System.Windows.Forms.DateTimePicker();
-            this.FechaFinal = new System.Windows.Forms.DateTimePicker();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -73,9 +53,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.Header)).BeginInit();
+            this.Header = new System.Windows.Forms.PictureBox();
+            this.Solicitud = new Jaeger.Repositorio.Forms.SolicitudControl();
+            this.CrearSolicitud = new System.Windows.Forms.Button();
             this.StatusBar.SuspendLayout();
-            this.SolicitudGroupBox.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -86,17 +67,8 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Header)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Header
-            // 
-            this.Header.BackColor = System.Drawing.Color.White;
-            this.Header.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Header.Location = new System.Drawing.Point(0, 0);
-            this.Header.Name = "Header";
-            this.Header.Size = new System.Drawing.Size(800, 40);
-            this.Header.TabIndex = 0;
-            this.Header.TabStop = false;
             // 
             // HeaderLabel
             // 
@@ -132,206 +104,6 @@
             this.ProgressBar.Name = "ProgressBar";
             this.ProgressBar.Size = new System.Drawing.Size(100, 16);
             this.ProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            // 
-            // SolicitudGroupBox
-            // 
-            this.SolicitudGroupBox.Controls.Add(this.button1);
-            this.SolicitudGroupBox.Controls.Add(this.lblTipoSolicitud);
-            this.SolicitudGroupBox.Controls.Add(this.comboBox1);
-            this.SolicitudGroupBox.Controls.Add(this.lblFechaFinal);
-            this.SolicitudGroupBox.Controls.Add(this.lblFechaInicial);
-            this.SolicitudGroupBox.Controls.Add(this.HoraFinal);
-            this.SolicitudGroupBox.Controls.Add(this.HoraInicial);
-            this.SolicitudGroupBox.Controls.Add(this.lblTipo);
-            this.SolicitudGroupBox.Controls.Add(this.Estado);
-            this.SolicitudGroupBox.Controls.Add(this.lblRFCTerceros);
-            this.SolicitudGroupBox.Controls.Add(this.TipoComplemento);
-            this.SolicitudGroupBox.Controls.Add(this.RFCTerceros);
-            this.SolicitudGroupBox.Controls.Add(this.lblEstado);
-            this.SolicitudGroupBox.Controls.Add(this.lblTipoComplemento);
-            this.SolicitudGroupBox.Controls.Add(this.lblFiltrarRFC);
-            this.SolicitudGroupBox.Controls.Add(this.SubTipoComprobante);
-            this.SolicitudGroupBox.Controls.Add(this.FiltrarRFC);
-            this.SolicitudGroupBox.Controls.Add(this.FechaInicial);
-            this.SolicitudGroupBox.Controls.Add(this.FechaFinal);
-            this.SolicitudGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SolicitudGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.SolicitudGroupBox.Name = "SolicitudGroupBox";
-            this.SolicitudGroupBox.Size = new System.Drawing.Size(290, 320);
-            this.SolicitudGroupBox.TabIndex = 3;
-            this.SolicitudGroupBox.TabStop = false;
-            this.SolicitudGroupBox.Text = "Solicitud";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(204, 286);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Enviar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // lblTipoSolicitud
-            // 
-            this.lblTipoSolicitud.AutoSize = true;
-            this.lblTipoSolicitud.Location = new System.Drawing.Point(12, 74);
-            this.lblTipoSolicitud.Name = "lblTipoSolicitud";
-            this.lblTipoSolicitud.Size = new System.Drawing.Size(95, 13);
-            this.lblTipoSolicitud.TabIndex = 32;
-            this.lblTipoSolicitud.Text = "Tipo de Descarga:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Location = new System.Drawing.Point(113, 70);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(166, 21);
-            this.comboBox1.TabIndex = 33;
-            // 
-            // lblFechaFinal
-            // 
-            this.lblFechaFinal.AutoSize = true;
-            this.lblFechaFinal.Location = new System.Drawing.Point(12, 126);
-            this.lblFechaFinal.Name = "lblFechaFinal";
-            this.lblFechaFinal.Size = new System.Drawing.Size(65, 13);
-            this.lblFechaFinal.TabIndex = 21;
-            this.lblFechaFinal.Text = "Fecha Final:";
-            // 
-            // lblFechaInicial
-            // 
-            this.lblFechaInicial.AutoSize = true;
-            this.lblFechaInicial.Location = new System.Drawing.Point(12, 100);
-            this.lblFechaInicial.Name = "lblFechaInicial";
-            this.lblFechaInicial.Size = new System.Drawing.Size(70, 13);
-            this.lblFechaInicial.TabIndex = 16;
-            this.lblFechaInicial.Text = "Fecha Inicial:";
-            // 
-            // HoraFinal
-            // 
-            this.HoraFinal.CustomFormat = "HH:mm:ss";
-            this.HoraFinal.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.HoraFinal.Location = new System.Drawing.Point(186, 122);
-            this.HoraFinal.Name = "HoraFinal";
-            this.HoraFinal.ShowUpDown = true;
-            this.HoraFinal.Size = new System.Drawing.Size(93, 20);
-            this.HoraFinal.TabIndex = 23;
-            this.HoraFinal.TabStop = false;
-            this.HoraFinal.Value = new System.DateTime(2021, 5, 17, 18, 3, 59, 132);
-            // 
-            // HoraInicial
-            // 
-            this.HoraInicial.CustomFormat = "HH:mm:ss";
-            this.HoraInicial.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.HoraInicial.Location = new System.Drawing.Point(186, 96);
-            this.HoraInicial.Name = "HoraInicial";
-            this.HoraInicial.ShowUpDown = true;
-            this.HoraInicial.Size = new System.Drawing.Size(93, 20);
-            this.HoraInicial.TabIndex = 20;
-            this.HoraInicial.TabStop = false;
-            this.HoraInicial.Value = new System.DateTime(2021, 5, 17, 18, 3, 59, 132);
-            // 
-            // lblTipo
-            // 
-            this.lblTipo.AutoSize = true;
-            this.lblTipo.Location = new System.Drawing.Point(12, 48);
-            this.lblTipo.Name = "lblTipo";
-            this.lblTipo.Size = new System.Drawing.Size(125, 13);
-            this.lblTipo.TabIndex = 17;
-            this.lblTipo.Text = "Consultar Comprobantes:";
-            // 
-            // Estado
-            // 
-            this.Estado.Location = new System.Drawing.Point(148, 152);
-            this.Estado.Name = "Estado";
-            this.Estado.Size = new System.Drawing.Size(131, 21);
-            this.Estado.TabIndex = 25;
-            // 
-            // lblRFCTerceros
-            // 
-            this.lblRFCTerceros.AutoSize = true;
-            this.lblRFCTerceros.Location = new System.Drawing.Point(12, 252);
-            this.lblRFCTerceros.Name = "lblRFCTerceros";
-            this.lblRFCTerceros.Size = new System.Drawing.Size(117, 13);
-            this.lblRFCTerceros.TabIndex = 30;
-            this.lblRFCTerceros.Text = "RFC a cuenta terceros:";
-            // 
-            // TipoComplemento
-            // 
-            this.TipoComplemento.Location = new System.Drawing.Point(12, 196);
-            this.TipoComplemento.Name = "TipoComplemento";
-            this.TipoComplemento.Size = new System.Drawing.Size(267, 21);
-            this.TipoComplemento.TabIndex = 27;
-            // 
-            // RFCTerceros
-            // 
-            this.RFCTerceros.Location = new System.Drawing.Point(158, 250);
-            this.RFCTerceros.MaxLength = 14;
-            this.RFCTerceros.Name = "RFCTerceros";
-            this.RFCTerceros.Size = new System.Drawing.Size(121, 20);
-            this.RFCTerceros.TabIndex = 31;
-            this.RFCTerceros.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblEstado
-            // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(12, 154);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(122, 13);
-            this.lblEstado.TabIndex = 24;
-            this.lblEstado.Text = "Estado del comprobante";
-            // 
-            // lblTipoComplemento
-            // 
-            this.lblTipoComplemento.AutoSize = true;
-            this.lblTipoComplemento.Location = new System.Drawing.Point(12, 177);
-            this.lblTipoComplemento.Name = "lblTipoComplemento";
-            this.lblTipoComplemento.Size = new System.Drawing.Size(182, 13);
-            this.lblTipoComplemento.TabIndex = 26;
-            this.lblTipoComplemento.Text = "Tipo de Comprobante (Complemento)";
-            // 
-            // lblFiltrarRFC
-            // 
-            this.lblFiltrarRFC.AutoSize = true;
-            this.lblFiltrarRFC.Location = new System.Drawing.Point(12, 225);
-            this.lblFiltrarRFC.Name = "lblFiltrarRFC";
-            this.lblFiltrarRFC.Size = new System.Drawing.Size(65, 13);
-            this.lblFiltrarRFC.TabIndex = 28;
-            this.lblFiltrarRFC.Text = "RFC Emisor:";
-            // 
-            // SubTipoComprobante
-            // 
-            this.SubTipoComprobante.Location = new System.Drawing.Point(143, 44);
-            this.SubTipoComprobante.Name = "SubTipoComprobante";
-            this.SubTipoComprobante.Size = new System.Drawing.Size(136, 21);
-            this.SubTipoComprobante.TabIndex = 19;
-            // 
-            // FiltrarRFC
-            // 
-            this.FiltrarRFC.Location = new System.Drawing.Point(158, 224);
-            this.FiltrarRFC.MaxLength = 14;
-            this.FiltrarRFC.Name = "FiltrarRFC";
-            this.FiltrarRFC.Size = new System.Drawing.Size(121, 20);
-            this.FiltrarRFC.TabIndex = 29;
-            this.FiltrarRFC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // FechaInicial
-            // 
-            this.FechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.FechaInicial.Location = new System.Drawing.Point(87, 96);
-            this.FechaInicial.Name = "FechaInicial";
-            this.FechaInicial.Size = new System.Drawing.Size(95, 20);
-            this.FechaInicial.TabIndex = 18;
-            this.FechaInicial.TabStop = false;
-            this.FechaInicial.Value = new System.DateTime(2021, 5, 17, 18, 3, 59, 132);
-            // 
-            // FechaFinal
-            // 
-            this.FechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.FechaFinal.Location = new System.Drawing.Point(87, 122);
-            this.FechaFinal.Name = "FechaFinal";
-            this.FechaFinal.Size = new System.Drawing.Size(95, 20);
-            this.FechaFinal.TabIndex = 22;
-            this.FechaFinal.TabStop = false;
-            this.FechaFinal.Value = new System.DateTime(2021, 5, 17, 18, 3, 59, 117);
             // 
             // tabControl1
             // 
@@ -385,6 +157,7 @@
             this.SolicitanteRFC.Name = "SolicitanteRFC";
             this.SolicitanteRFC.Size = new System.Drawing.Size(104, 20);
             this.SolicitanteRFC.TabIndex = 23;
+            this.SolicitanteRFC.Text = "IPR981125PN9";
             this.SolicitanteRFC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
@@ -422,6 +195,7 @@
             this.PathCer.Name = "PathCer";
             this.PathCer.Size = new System.Drawing.Size(269, 20);
             this.PathCer.TabIndex = 17;
+            this.PathCer.Text = resources.GetString("PathCer.Text");
             // 
             // Password
             // 
@@ -430,6 +204,7 @@
             this.Password.PasswordChar = '*';
             this.Password.Size = new System.Drawing.Size(213, 20);
             this.Password.TabIndex = 21;
+            this.Password.Text = "Improsa22";
             // 
             // lblCertificado
             // 
@@ -449,7 +224,8 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.SolicitudGroupBox);
+            this.tabPage2.Controls.Add(this.CrearSolicitud);
+            this.tabPage2.Controls.Add(this.Solicitud);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -588,6 +364,33 @@
             this.textBox1.Size = new System.Drawing.Size(490, 228);
             this.textBox1.TabIndex = 0;
             // 
+            // Header
+            // 
+            this.Header.BackColor = System.Drawing.Color.White;
+            this.Header.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Header.Location = new System.Drawing.Point(0, 0);
+            this.Header.Name = "Header";
+            this.Header.Size = new System.Drawing.Size(800, 40);
+            this.Header.TabIndex = 0;
+            this.Header.TabStop = false;
+            // 
+            // Solicitud
+            // 
+            this.Solicitud.Location = new System.Drawing.Point(3, 6);
+            this.Solicitud.Name = "Solicitud";
+            this.Solicitud.Size = new System.Drawing.Size(288, 253);
+            this.Solicitud.TabIndex = 0;
+            // 
+            // CrearSolicitud
+            // 
+            this.CrearSolicitud.Location = new System.Drawing.Point(215, 297);
+            this.CrearSolicitud.Name = "CrearSolicitud";
+            this.CrearSolicitud.Size = new System.Drawing.Size(75, 23);
+            this.CrearSolicitud.TabIndex = 31;
+            this.CrearSolicitud.Text = "Crear";
+            this.CrearSolicitud.UseVisualStyleBackColor = true;
+            this.CrearSolicitud.Click += new System.EventHandler(this.CrearSolicitud_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -603,11 +406,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Servicio de Solicitud de Descarga Masiva de CFDI (Tester)";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Header)).EndInit();
             this.StatusBar.ResumeLayout(false);
             this.StatusBar.PerformLayout();
-            this.SolicitudGroupBox.ResumeLayout(false);
-            this.SolicitudGroupBox.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -622,6 +422,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Header)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -632,25 +433,6 @@
         private System.Windows.Forms.PictureBox Header;
         private System.Windows.Forms.Label HeaderLabel;
         private System.Windows.Forms.StatusStrip StatusBar;
-        private System.Windows.Forms.GroupBox SolicitudGroupBox;
-        private System.Windows.Forms.Label lblTipoSolicitud;
-        public System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label lblFechaFinal;
-        private System.Windows.Forms.Label lblFechaInicial;
-        public System.Windows.Forms.DateTimePicker HoraFinal;
-        public System.Windows.Forms.DateTimePicker HoraInicial;
-        private System.Windows.Forms.Label lblTipo;
-        public System.Windows.Forms.ComboBox Estado;
-        private System.Windows.Forms.Label lblRFCTerceros;
-        public System.Windows.Forms.ComboBox TipoComplemento;
-        public System.Windows.Forms.TextBox RFCTerceros;
-        private System.Windows.Forms.Label lblEstado;
-        private System.Windows.Forms.Label lblTipoComplemento;
-        private System.Windows.Forms.Label lblFiltrarRFC;
-        public System.Windows.Forms.ComboBox SubTipoComprobante;
-        public System.Windows.Forms.TextBox FiltrarRFC;
-        public System.Windows.Forms.DateTimePicker FechaInicial;
-        public System.Windows.Forms.DateTimePicker FechaFinal;
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
         private System.Windows.Forms.ToolStripProgressBar ProgressBar;
         private System.Windows.Forms.TabControl tabControl1;
@@ -668,7 +450,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -679,5 +460,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Verificar;
+        private SolicitudControl Solicitud;
+        private System.Windows.Forms.Button CrearSolicitud;
     }
 }

@@ -11,7 +11,7 @@ namespace Jaeger.SAT.API.Services.Abstracts {
     public class SolicitudService : ServiceBase, IServiceBase, IBase, IConsultaService {
         #region
         protected internal ISolicitud _Solicitud;
-        protected internal RespuestaSolicitudDescMasTercero _SolicitudDescMasTercero;
+        protected internal RespuestaSolicitudDescMasTercero _RespuestaSolicitudDescTercero;
         #endregion
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Jaeger.SAT.API.Services.Abstracts {
         /// <returns>IQueryResponse</returns>
         public IQueryResponse Execute() {
             this.Execute(_Solicitud);
-            var response = _SolicitudDescMasTercero.ToTraslate().AddSolicitud(_Solicitud).AddSolicitanteRFC(Solicitante.RFC);
+            var response = _RespuestaSolicitudDescTercero.ToTraslate().AddSolicitud(_Solicitud).AddSolicitanteRFC(Solicitante.RFC);
             return response;
         }
 
@@ -52,13 +52,13 @@ namespace Jaeger.SAT.API.Services.Abstracts {
         /// <returns>IQueryResponse</returns>
         public RespuestaSolicitudDescMasTercero Execute(ISolicitud solicitud) {
             if (solicitud.TipoConsulta == TipoConsultaEnum.Emitidos) {
-                _SolicitudDescMasTercero = this.Execute(CrearSolicitudEmitidos(solicitud));
+                _RespuestaSolicitudDescTercero = this.Execute(CrearSolicitudEmitidos(solicitud));
             } else if (solicitud.TipoConsulta == TipoConsultaEnum.Recibidos) {
-                _SolicitudDescMasTercero = this.Execute(CrearSolicitudRecibidos(solicitud));
+                _RespuestaSolicitudDescTercero = this.Execute(CrearSolicitudRecibidos(solicitud));
             } else if (solicitud.TipoConsulta == TipoConsultaEnum.Folio) {
-                _SolicitudDescMasTercero = this.Execute(CrearSolicitudFolio(solicitud));
+                _RespuestaSolicitudDescTercero = this.Execute(CrearSolicitudFolio(solicitud));
             }
-            return _SolicitudDescMasTercero;
+            return _RespuestaSolicitudDescTercero;
         }
 
         public RespuestaSolicitudDescMasTercero Execute(SolicitudDescargaMasivaTerceroEmitidos request) {
@@ -72,14 +72,14 @@ namespace Jaeger.SAT.API.Services.Abstracts {
                     // serializar peticion
                     var xmlRequest = XmlSerializerService.SerializeObject(request);
                     LogInfoService.Log("[Genera Solicitud (Peticiones)] Request: ", xmlRequest);
-                    _SolicitudDescMasTercero = descargaServiceClient.SolicitaDescargaEmitidos(request);
+                    _RespuestaSolicitudDescTercero = descargaServiceClient.SolicitaDescargaEmitidos(request);
                 }
-                var xmlResponse = XmlSerializerService.SerializeObject(_SolicitudDescMasTercero);
+                var xmlResponse = XmlSerializerService.SerializeObject(_RespuestaSolicitudDescTercero);
                 LogInfoService.Log("[Genera Solicitud (Peticiones)] Response: ", xmlResponse);
             } catch (Exception ex) {
                 LogErrorService.Log("[Genera Solicitud (Peticiones)] Error: " + ex.Message, ex.StackTrace);
             }
-            return _SolicitudDescMasTercero;
+            return _RespuestaSolicitudDescTercero;
         }
 
         public RespuestaSolicitudDescMasTercero Execute(SolicitudDescargaMasivaTerceroFolio request) {
@@ -93,14 +93,14 @@ namespace Jaeger.SAT.API.Services.Abstracts {
                     // serializar peticion
                     var xmlRequest = XmlSerializerService.SerializeObject(request);
                     LogInfoService.Log("[Genera Solicitud (Peticiones)] Request: ", xmlRequest);
-                    _SolicitudDescMasTercero = descargaServiceClient.SolicitaDescargaFolio(request);
+                    _RespuestaSolicitudDescTercero = descargaServiceClient.SolicitaDescargaFolio(request);
                 }
-                var xmlResponse = XmlSerializerService.SerializeObject(_SolicitudDescMasTercero);
+                var xmlResponse = XmlSerializerService.SerializeObject(_RespuestaSolicitudDescTercero);
                 LogInfoService.Log("[Genera Solicitud (Peticiones)] Response: ", xmlResponse);
             } catch (Exception ex) {
                 LogErrorService.Log("[Genera Solicitud (Peticiones)] Error: " + ex.Message, ex.StackTrace);
             }
-            return _SolicitudDescMasTercero;
+            return _RespuestaSolicitudDescTercero;
         }
 
         public RespuestaSolicitudDescMasTercero Execute(SolicitudDescargaMasivaTerceroRecibidos request) {
@@ -114,14 +114,14 @@ namespace Jaeger.SAT.API.Services.Abstracts {
                     // serializar peticion
                     var xmlRequest = XmlSerializerService.SerializeObject(request);
                     LogInfoService.Log("[Genera Solicitud (Peticiones)] Request: ", xmlRequest);
-                    _SolicitudDescMasTercero = descargaServiceClient.SolicitaDescargaRecibidos(request);
+                    _RespuestaSolicitudDescTercero = descargaServiceClient.SolicitaDescargaRecibidos(request);
                 }
-                var xmlResponse = XmlSerializerService.SerializeObject(_SolicitudDescMasTercero);
+                var xmlResponse = XmlSerializerService.SerializeObject(_RespuestaSolicitudDescTercero);
                 LogInfoService.Log("[Genera Solicitud (Peticiones)] Response: ", xmlResponse);
             } catch (Exception ex) {
                 LogErrorService.Log("[Genera Solicitud (Peticiones)] Error: " + ex.Message, ex.StackTrace);
             }
-            return _SolicitudDescMasTercero;
+            return _RespuestaSolicitudDescTercero;
         }
 
         /// <summary>
@@ -154,19 +154,11 @@ namespace Jaeger.SAT.API.Services.Abstracts {
 
             response.TipoComprobante = this.GetTipoDeComprobante(solicitud.TipoDeComprobante);
 
-            if (string.IsNullOrEmpty(solicitud.RfcACuentaTerceros)) {
-                response.RfcACuentaTerceros = null;
-            } else {
-                response.RfcACuentaTerceros = solicitud.RfcACuentaTerceros;
-            }
+            response.RfcACuentaTerceros = this.GetRfcACuentaTerceros(solicitud.RfcACuentaTerceros);
 
             // en caso de no declarar un complemento se obtendran todos los comprobantes sin
             // importar el complemento asociado a los comprobantes
-            if (string.IsNullOrEmpty(solicitud.Complemento)) {
-                response.Complemento = null;
-            } else {
-                response.Complemento = solicitud.Complemento;
-            }
+            response.Complemento = this.GetComplemento(solicitud.Complemento);
 
             response.Signature = CreateDigest();
             LogInfoService.Log("[Crear Solicitud]", XmlSerializerService.SerializeObject(response));
@@ -202,19 +194,11 @@ namespace Jaeger.SAT.API.Services.Abstracts {
 
             response.TipoComprobante = this.GetTipoDeComprobante(solicitud.TipoDeComprobante);
 
-            if (string.IsNullOrEmpty(solicitud.RfcACuentaTerceros)) {
-                response.RfcACuentaTerceros = null;
-            } else {
-                response.RfcACuentaTerceros = solicitud.RfcACuentaTerceros;
-            }
+            response.RfcACuentaTerceros = this.GetRfcACuentaTerceros(solicitud.RfcACuentaTerceros);
 
             // en caso de no declarar un complemento se obtendran todos los comprobantes sin
             // importar el complemento asociado a los comprobantes
-            if (string.IsNullOrEmpty(solicitud.Complemento)) {
-                response.Complemento = null;
-            } else {
-                response.Complemento = solicitud.Complemento;
-            }
+            response.Complemento = this.GetComplemento(solicitud.Complemento);
 
             response.Signature = CreateDigest();
             LogInfoService.Log("[Crear Solicitud]", XmlSerializerService.SerializeObject(response));
@@ -231,18 +215,7 @@ namespace Jaeger.SAT.API.Services.Abstracts {
             return response;
         }
 
-        internal string GetEstadoComprobante(EstadoComprobanteEnum estado) {
-            switch (estado) {
-                case EstadoComprobanteEnum.Todos:
-                    return null; // No especificar estado
-                case EstadoComprobanteEnum.Vigente:
-                    return "Vigente";
-                case EstadoComprobanteEnum.Cancelado:
-                    return "Cancelado";
-                default:
-                    return null;
-            }
-        }
+        #region metodos privados
         internal string GetTipoDeComprobante(TipoDeComprobante tipoDeComprobante) {
             switch (tipoDeComprobante) {
                 case TipoDeComprobante.Ingreso:
@@ -255,6 +228,21 @@ namespace Jaeger.SAT.API.Services.Abstracts {
                     return "N";
                 case TipoDeComprobante.Pagos:
                     return "P";
+                default:
+                    return null;
+            }
+        }
+
+        internal string GetEstadoComprobante(EstadoComprobanteEnum estado) {
+            // es un dato opcional pero debemos especificar "Todos" para que se incluyan los cancelados,
+            // si no se especifica se considera Vigente como valor por defecto
+            switch (estado) {
+                case EstadoComprobanteEnum.Todos:
+                    return "Todos"; 
+                case EstadoComprobanteEnum.Vigente:
+                    return "Vigente";
+                case EstadoComprobanteEnum.Cancelado:
+                    return "Cancelado";
                 default:
                     return null;
             }
@@ -273,5 +261,14 @@ namespace Jaeger.SAT.API.Services.Abstracts {
                     return TipoDescargaMasivaTerceros.CFDI; // Default to CFDI if not specified
             }
         }
+
+        internal string GetRfcACuentaTerceros(string rfcACuentaTerceros) {
+            return string.IsNullOrEmpty(rfcACuentaTerceros) ? null : rfcACuentaTerceros;
+        }
+
+        internal string GetComplemento(string complemento) {
+            return string.IsNullOrEmpty(complemento) ? null : complemento;
+        }
+        #endregion
     }
 }

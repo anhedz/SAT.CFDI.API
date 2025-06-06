@@ -1,5 +1,5 @@
-﻿using Jaeger.SAT.API.WebService.Base;
-using System.Web.UI.WebControls;
+﻿using Jaeger.SAT.API.WebService.Abstracts;
+using Jaeger.SAT.API.WebService.Base;
 
 namespace Jaeger.SAT.API.WebService.Solicitud {
     /// <remarks/>
@@ -8,7 +8,7 @@ namespace Jaeger.SAT.API.WebService.Solicitud {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://DescargaMasivaTerceros.sat.gob.mx")]
-    public partial class SolicitudDescargaMasivaTerceroRecibidos : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class SolicitudDescargaMasivaTerceroRecibidos : PropertyChangeImplementation, System.ComponentModel.INotifyPropertyChanged {
 
         private SignatureType signatureField;
 
@@ -222,15 +222,6 @@ namespace Jaeger.SAT.API.WebService.Solicitud {
             set {
                 this.rfcACuentaTercerosField = value;
                 this.RaisePropertyChanged("RfcACuentaTerceros");
-            }
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }

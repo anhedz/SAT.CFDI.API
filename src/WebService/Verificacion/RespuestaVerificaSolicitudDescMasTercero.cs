@@ -1,11 +1,13 @@
-﻿namespace Jaeger.SAT.API.WebService.Verificacion {
+﻿using Jaeger.SAT.API.WebService.Abstracts;
+
+namespace Jaeger.SAT.API.WebService.Verificacion {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://DescargaMasivaTerceros.sat.gob.mx")]
-    public partial class RespuestaVerificaSolicitudDescMasTercero : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class RespuestaVerificaSolicitudDescMasTercero : PropertyChangeImplementation, System.ComponentModel.INotifyPropertyChanged {
 
         private string[] idsPaquetesField;
 
@@ -109,15 +111,6 @@
             set {
                 this.mensajeField = value;
                 this.RaisePropertyChanged("Mensaje");
-            }
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }

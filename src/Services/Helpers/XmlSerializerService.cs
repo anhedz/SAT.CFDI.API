@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 using System.Xml;
 
 namespace Jaeger.SAT.API.Services.Helpers {
-    internal class XmlSerializerService {
+    public class XmlSerializerService {
 
         public static string SerializeObject<T>(T obj) {
             UTF8Encoding utf8WithoutBom = new UTF8Encoding(false);
