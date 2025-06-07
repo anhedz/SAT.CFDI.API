@@ -1,23 +1,27 @@
 ﻿using Jaeger.SAT.API.WebService.Abstracts;
 using Jaeger.SAT.API.WebService.Base;
 
-namespace Jaeger.SAT.API.WebService.Verificacion {
+namespace Jaeger.SAT.API.WebService.Solicitud {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://DescargaMasivaTerceros.sat.gob.mx")]
-    public partial class VerificaSolicitudDescargaMasivaTercero : PropertyChangeImplementation, System.ComponentModel.INotifyPropertyChanged {
+    public partial class SolicitudDescargaMasivaTerceroFolio : PropertyChangeImplementation, System.ComponentModel.INotifyPropertyChanged {
 
         private SignatureType signatureField;
 
-        private string idSolicitudField;
-
         private string rfcSolicitanteField;
 
+        private string folioField;
+
         /// <summary>
-        /// Firma de la petición realizada con el certificado de e.firma.
+        /// Firma de la petición realizada con el certificado de tipo E.FIRMA.
+        /// La petición debe ordenarse alfabéticamente para que pueda realizarse correctamente la validación de la firma.
+        /// Atributos: 
+        /// 1. Folio
+        /// 2. RfcSolicitante
         /// </summary>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.w3.org/2000/09/xmldsig#", Order = 0)]
         public SignatureType Signature {
@@ -31,21 +35,8 @@ namespace Jaeger.SAT.API.WebService.Verificacion {
         }
 
         /// <summary>
-        /// Contiene el Identificador de la solicitud que se pretende consultar.
-        /// </summary>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string IdSolicitud {
-            get {
-                return this.idSolicitudField;
-            }
-            set {
-                this.idSolicitudField = value;
-                this.RaisePropertyChanged("IdSolicitud");
-            }
-        }
-
-        /// <summary>
-        /// Contiene el RFC del solicitante que generó la petición de solicitud de descarga masiva.
+        /// Contiene el RFC del que está realizando la solicitud de descarga.
+        /// Debe corresponder con el contribuyente que está realizando la solicitud de descarga.
         /// </summary>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string RfcSolicitante {
@@ -55,6 +46,20 @@ namespace Jaeger.SAT.API.WebService.Verificacion {
             set {
                 this.rfcSolicitanteField = value;
                 this.RaisePropertyChanged("RfcSolicitante");
+            }
+        }
+
+        /// <summary>
+        /// Folio Fiscal con formato: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX (Obligatorio).
+        /// </summary>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Folio {
+            get {
+                return this.folioField;
+            }
+            set {
+                this.folioField = value;
+                this.RaisePropertyChanged("Folio");
             }
         }
     }

@@ -2,7 +2,7 @@
 
 namespace Jaeger.SAT.API.Services.Enums {
     /// <summary>
-    /// tipo de consulta Emitidos = 1 o Recibidos = 2
+    /// tipo de consulta Emitidos = 1, Recibidos = 2, Folio = 3
     /// </summary>
     public enum TipoConsultaEnum {
         /// <summary>
@@ -14,6 +14,11 @@ namespace Jaeger.SAT.API.Services.Enums {
         /// comprobantes recibidos
         /// </summary>
         [Description("Recibidos")]
-        Recibidos = 2
+        Recibidos = 2,
+        /// <summary>
+        /// folio fiscal XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+        /// </summary>
+        [Description("Folio")]
+        Folio = 3,
     }
 }

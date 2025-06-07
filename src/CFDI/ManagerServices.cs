@@ -19,7 +19,7 @@ namespace Jaeger.SAT.API.CFDI.Services {
         }
 
         protected override void FactoryConsulta() {
-            this._ConsultaService = new ConsultaService();
+            this._ConsultaService = new SolicitudService();
         }
 
         protected override void FactoryDescarga() {

@@ -4,8 +4,8 @@ namespace Jaeger.SAT.API.CFDI {
     /// <summary>
     /// Servicio Solicutd de Descarga Masiva
     /// </summary>
-    internal class ConsultaService : API.Services.Abstracts.ConsultaService, IConsultaService {
-        public ConsultaService() {
+    internal class SolicitudService : API.Services.Abstracts.SolicitudService, IConsultaService {
+        public SolicitudService() {
             this.AddURL("https://cfdidescargamasivasolicitud.clouda.sat.gob.mx/SolicitaDescargaService.svc");
         }
     }

@@ -45,6 +45,13 @@ namespace Jaeger.SAT.API.Services.Abstracts {
             return string.Empty;
         }
 
+        public string GeneraToken1() {
+            // Este metodo es para evitar el error de autenticacion cuando se llama al servicio sin un certificado valido
+            // Se puede usar un token falso o una cadena vacia
+            LogInfoService.Log("[Genera Token Fake] Autentica", $"[Token]: {Token}");
+            return @"eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE3MzU4Nzg3OTIsImV4cCI6MTczNTg3OTM5MiwiaWF0IjoxNzM1ODc4NzkyLCJpc3MiOiJMb2FkU29saWNpdHVkRGVjYXJnYU1hc2l2YVRlcmNlcm9zIiwiYWN0b3J0IjoiMzAzMDMwMzAzMTMwMzAzMDMwMzAzMDM1MzEzMzM1MzYzNTM5MzczNSJ9.KWp1dlPyOnlDcYJ8x1JhMwuaQtSvHfnYTsw9Tvbzx9c%26wrap_subject%3d3030303031303030303030353133353635393735";
+        }
+
         /// <summary>
         /// se sobre escribe el metodo por modo de seguridad para evitar el error 
         /// [Genera Token] Error: An error occurred when verifying security for the message.

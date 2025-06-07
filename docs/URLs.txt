@@ -1,0 +1,33 @@
+URL´S PRODUCTIVAS PARA IMPLEMENTAR EL SERVICIO WEB DE DESCARGA MASIVA DE
+TERCEROS PARA CFDI Y CFDI DE RETENCIONES. 
+
+Fecha: mayo 2025
+Versión 1.5
+
+1. CFDI
+
+Autenticación: 
+https://cfdidescargamasivasolicitud.clouda.sat.gob.mx/Autenticacion/Autenticacion.svc 
+
+Solicitud: 
+https://cfdidescargamasivasolicitud.clouda.sat.gob.mx/SolicitaDescargaService.svc 
+
+Verificación: 
+https://cfdidescargamasivasolicitud.clouda.sat.gob.mx/VerificaSolicitudDescargaService.svc 
+
+Descarga:
+https://cfdidescargamasiva.clouda.sat.gob.mx/DescargaMasivaService.svc 
+
+2. RETENCIONES
+
+Autenticación: 
+https://retendescargamasivasolicitud.clouda.sat.gob.mx/Autenticacion/Autenticacion.svc 
+
+Solicitud: 
+https://retendescargamasivasolicitud.clouda.sat.gob.mx/SolicitaDescargaService.svc 
+
+Verificación: 
+https://retendescargamasivasolicitud.clouda.sat.gob.mx/VerificaSolicitudDescargaService.svc 
+
+Descarga: 
+https://retendescargamasiva.clouda.sat.gob.mx/DescargaMasivaService.svc  

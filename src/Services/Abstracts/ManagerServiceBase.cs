@@ -16,7 +16,7 @@ namespace Jaeger.SAT.API.Services.Abstracts {
         /// constructor
         /// </summary>
         public ManagerServiceBase() : base() {
-            Version = "AP1.0.0.1";
+            Version = "AP1.0.0.2";
         }
 
         /// <summary>
