@@ -138,14 +138,6 @@
     <Compile Include="Services\Abstracts\AutenticaService.cs" />
     <Compile Include="Services\Abstracts\DescargaService.cs" />
     <Compile Include="Services\Abstracts\VerificaService.cs" />
-    <Compile Include="WebService\Consultas\EstadoComprobante.cs" />
-    <Compile Include="WebService\Consultas\ISolicitaDescargaService.cs" />
-    <Compile Include="WebService\Consultas\ISolicitaDescargaServiceChannel.cs" />
-    <Compile Include="WebService\Consultas\RespuestaSolicitudDescMasTercero.cs" />
-    <Compile Include="WebService\Consultas\SolicitaDescargaServiceClient.cs" />
-    <Compile Include="WebService\Consultas\SolicitudDescargaMasivaTercero.cs" />
-    <Compile Include="WebService\Consultas\TipoDeComprobante.cs" />
-    <Compile Include="WebService\Consultas\TipoDescargaMasivaTerceros.cs" />
     <Compile Include="WebService\Descargas\DescargaMasivaTercerosServiceClient.cs" />
     <Compile Include="WebService\Descargas\IDescargaMasivaTercerosService.cs" />
     <Compile Include="WebService\Descargas\IDescargaMasivaTercerosServiceChannel.cs" />

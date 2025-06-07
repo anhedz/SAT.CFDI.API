@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.HeaderLabel = new System.Windows.Forms.Label();
             this.StatusBar = new System.Windows.Forms.StatusStrip();
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -40,6 +39,8 @@
             this.lblCertificado = new System.Windows.Forms.Label();
             this.lblPassword1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.CrearSolicitud = new System.Windows.Forms.Button();
+            this.Solicitud = new Jaeger.Repositorio.Forms.SolicitudControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.Verificar = new System.Windows.Forms.Button();
@@ -54,8 +55,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.Header = new System.Windows.Forms.PictureBox();
-            this.Solicitud = new Jaeger.Repositorio.Forms.SolicitudControl();
-            this.CrearSolicitud = new System.Windows.Forms.Button();
             this.StatusBar.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -157,7 +156,6 @@
             this.SolicitanteRFC.Name = "SolicitanteRFC";
             this.SolicitanteRFC.Size = new System.Drawing.Size(104, 20);
             this.SolicitanteRFC.TabIndex = 23;
-            this.SolicitanteRFC.Text = "IPR981125PN9";
             this.SolicitanteRFC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
@@ -195,7 +193,6 @@
             this.PathCer.Name = "PathCer";
             this.PathCer.Size = new System.Drawing.Size(269, 20);
             this.PathCer.TabIndex = 17;
-            this.PathCer.Text = resources.GetString("PathCer.Text");
             // 
             // Password
             // 
@@ -204,7 +201,6 @@
             this.Password.PasswordChar = '*';
             this.Password.Size = new System.Drawing.Size(213, 20);
             this.Password.TabIndex = 21;
-            this.Password.Text = "Improsa22";
             // 
             // lblCertificado
             // 
@@ -233,6 +229,23 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Solicitud";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // CrearSolicitud
+            // 
+            this.CrearSolicitud.Location = new System.Drawing.Point(215, 297);
+            this.CrearSolicitud.Name = "CrearSolicitud";
+            this.CrearSolicitud.Size = new System.Drawing.Size(75, 23);
+            this.CrearSolicitud.TabIndex = 31;
+            this.CrearSolicitud.Text = "Crear";
+            this.CrearSolicitud.UseVisualStyleBackColor = true;
+            this.CrearSolicitud.Click += new System.EventHandler(this.CrearSolicitud_Click);
+            // 
+            // Solicitud
+            // 
+            this.Solicitud.Location = new System.Drawing.Point(3, 6);
+            this.Solicitud.Name = "Solicitud";
+            this.Solicitud.Size = new System.Drawing.Size(288, 253);
+            this.Solicitud.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -373,23 +386,6 @@
             this.Header.Size = new System.Drawing.Size(800, 40);
             this.Header.TabIndex = 0;
             this.Header.TabStop = false;
-            // 
-            // Solicitud
-            // 
-            this.Solicitud.Location = new System.Drawing.Point(3, 6);
-            this.Solicitud.Name = "Solicitud";
-            this.Solicitud.Size = new System.Drawing.Size(288, 253);
-            this.Solicitud.TabIndex = 0;
-            // 
-            // CrearSolicitud
-            // 
-            this.CrearSolicitud.Location = new System.Drawing.Point(215, 297);
-            this.CrearSolicitud.Name = "CrearSolicitud";
-            this.CrearSolicitud.Size = new System.Drawing.Size(75, 23);
-            this.CrearSolicitud.TabIndex = 31;
-            this.CrearSolicitud.Text = "Crear";
-            this.CrearSolicitud.UseVisualStyleBackColor = true;
-            this.CrearSolicitud.Click += new System.EventHandler(this.CrearSolicitud_Click);
             // 
             // MainForm
             // 

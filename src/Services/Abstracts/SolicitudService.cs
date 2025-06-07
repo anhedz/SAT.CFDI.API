@@ -267,6 +267,9 @@ namespace Jaeger.SAT.API.Services.Abstracts {
         }
 
         internal string GetComplemento(string complemento) {
+            if (complemento == "-1") {
+                return null; // No complemento selected
+            }
             return string.IsNullOrEmpty(complemento) ? null : complemento;
         }
         #endregion
